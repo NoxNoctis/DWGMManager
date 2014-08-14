@@ -1,0 +1,12 @@
+{
+    "name": "DWGM",
+    "version": "0.0.1",
+    "dependencies": {
+        "bootstrap":"latest",
+        "jquery": "latest",
+        "angular": "latest",
+        "angular-bootstrap":"latest",
+        "angular-ui-router":"latest"
+    },
+    "private": true
+}

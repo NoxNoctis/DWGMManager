@@ -6,15 +6,10 @@
 
     <title></title>
 </head>
-<body ng-controller="mainCtrl">
 
-<tabset justified="true">
-    <tab heading="Map">Justified content</tab>
-    <tab heading="Chars">Short Labeled Justified content</tab>
-    <tab heading="Moves">Long Labeled Justified content</tab>
-    <tab heading="Plots">Long Labeled Justified content</tab>
-    <tab heading="Encounters">Long Labeled Justified content</tab>
-</tabset>
+<body ng-controller="mainCtrl">
+<ng-include src="'templates/header.html'"></ng-include>
+<div ui-view></div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>

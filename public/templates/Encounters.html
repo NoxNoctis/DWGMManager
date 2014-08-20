@@ -1,22 +1,51 @@
-<ul>
-    <li>Monsters
-        <ul>
-            <li> Specific list</li>
-            <li> Backup list for random encounters</li>
-            <li> Monster Generator</li>
-        </ul>
-    </li>
-    <li>Traps
-    <ul>
-        <li> Specific list</li>
-        <li> Backup list for random traps</li>
-        <li> Trap Generator</li>
-        </ul>
-    <li>         Treasure
-    <ul>
-        <li> Specific list</li>
-        <li> Backup list for random treasures</li>
-        <li> Treasure Generator?</li>
-    </ul>
-    </li>
-</ul>
+<!--<ul>-->
+    <!--<li>Monsters-->
+        <!--<ul>-->
+            <!--<li> Specific list</li>-->
+            <!--<li> Backup list for random encounters</li>-->
+            <!--<li> Monster Generator</li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!--<li>Traps-->
+    <!--<ul>-->
+        <!--<li> Specific list</li>-->
+        <!--<li> Backup list for random traps</li>-->
+        <!--<li> Trap Generator</li>-->
+        <!--</ul>-->
+    <!--<li>         Treasure-->
+    <!--<ul>-->
+        <!--<li> Specific list</li>-->
+        <!--<li> Backup list for random treasures</li>-->
+        <!--<li> Treasure Generator?</li>-->
+    <!--</ul>-->
+    <!--</li>-->
+<!--</ul>-->
+
+        <tabset>
+            <tab heading="monsters" class="tab-pane">
+                <div ng-repeat="monster in monsters" class="monster-descriptor">
+                    <button>edit</button>
+                    <button>pic</button>
+                    <div>{{monster.name}}</div>
+                    <div>HP {{monster.HP}}</div>
+                    <div>armor: {{monster.armor}}</div>
+                    <div>{{monster.attack.action}} ({{monster.attack.roll}})</div>
+                    <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
+                    <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
+                    <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
+                    <div>instinct: {{monster.instinct}}</div>
+                    <div><ul><li ng-repeat="move in monster.moves">{{move}}</li></ul></div>
+                    <button>Fight!</button>
+                </div>
+                <button class="btn btn-primary encounter-generator">Generate</button>
+            </tab>
+            <tab heading="traps" class="tab-pane"></tab>
+            <tab heading="treasures" class="tab-pane"></tab>
+        </tabset>
+        <div class="sideMenu">
+            <ul>
+                <li ng-repeat="region in regions" ng-click="onRegionClick($index)">
+                                                  {{region.name}}
+                </li>
+            </ul>
+            </div>

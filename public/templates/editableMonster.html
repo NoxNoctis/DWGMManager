@@ -1,0 +1,25 @@
+<div>
+    <span>Name: </span><input type="text" ng-model="selectedMonster.name">
+</div>
+<div><span>HP: </span><input type="number" ng-model="selectedMonster.HP">
+    <span>   Armor: </span><input type="number" ng-model="selectedMonster.armor">
+</div>
+        <div>Attack:</div>
+        <div>
+            <input type="text" ng-model="selectedMonster.attack.action">
+            (<input type="text" ng-model="selectedMonster.attack.roll"> dmg +
+            <input type="number" ng-model="selectedMonster.attack.piercing"> piercing)
+        </div>
+        <div>
+            <span>attack tags:</span>
+            <select ng-model="selectedMonster.attack.extra">
+                <option>
+                    close
+                </option>
+                <option>
+                    messy
+                </option>
+            </select>
+
+        </div>
+

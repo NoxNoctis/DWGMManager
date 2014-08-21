@@ -1,26 +1,3 @@
-<!--<ul>-->
-    <!--<li>Monsters-->
-        <!--<ul>-->
-            <!--<li> Specific list</li>-->
-            <!--<li> Backup list for random encounters</li>-->
-            <!--<li> Monster Generator</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li>Traps-->
-    <!--<ul>-->
-        <!--<li> Specific list</li>-->
-        <!--<li> Backup list for random traps</li>-->
-        <!--<li> Trap Generator</li>-->
-        <!--</ul>-->
-    <!--<li>         Treasure-->
-    <!--<ul>-->
-        <!--<li> Specific list</li>-->
-        <!--<li> Backup list for random treasures</li>-->
-        <!--<li> Treasure Generator?</li>-->
-    <!--</ul>-->
-    <!--</li>-->
-<!--</ul>-->
-
         <tabset>
             <tab heading="monsters" class="tab-pane">
                 <div ng-repeat="monster in monsters" class="monster-descriptor">
@@ -29,7 +6,7 @@
                     <div>{{monster.name}}</div>
                     <div>HP {{monster.HP}}</div>
                     <div>armor: {{monster.armor}}</div>
-                    <div>{{monster.attack.action}} ({{monster.attack.roll}})</div>
+                    <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)</div>
                     <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
                     <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
                     <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>

@@ -6,6 +6,7 @@ app.controller('encounterCtrl', function ($scope) {
 
 
 
+    $scope.selectedMonster={};
 
     $scope.regions = [
         {
@@ -17,7 +18,8 @@ app.controller('encounterCtrl', function ($scope) {
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -45,7 +47,8 @@ app.controller('encounterCtrl', function ($scope) {
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -66,14 +69,14 @@ app.controller('encounterCtrl', function ($scope) {
                     specialQuality: undefined,
                     instinct: "Gather food",
                     moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
-                },
-                {
+                },{
                     name: "Blade Horror",
                     HP: 9,
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -94,14 +97,14 @@ app.controller('encounterCtrl', function ($scope) {
                     specialQuality: undefined,
                     instinct: "Gather food",
                     moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
-                },
-                {
+                },{
                     name: "Blade Horror",
                     HP: 9,
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -122,14 +125,14 @@ app.controller('encounterCtrl', function ($scope) {
                     specialQuality: undefined,
                     instinct: "Gather food",
                     moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
-                },
-                {
+                },{
                     name: "Blade Horror",
                     HP: 9,
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -150,14 +153,14 @@ app.controller('encounterCtrl', function ($scope) {
                     specialQuality: undefined,
                     instinct: "Gather food",
                     moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
-                },
-                {
+                },{
                     name: "Blade Horror",
                     HP: 9,
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
@@ -178,20 +181,62 @@ app.controller('encounterCtrl', function ($scope) {
                     specialQuality: undefined,
                     instinct: "Gather food",
                     moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
-                }    ,
-                {
+                },{
                     name: "Blade Horror",
                     HP: 9,
                     armor: 4,
                     attack: {
                         action: "Slash",
-                        roll: "b[d8]+2, +3 piercing",
+                        roll: "b[d8]+2",
+                        piercing: 3,
                         extra: ["close, messy"]
                     },
                     tags: ["group, intelligent, terrifying"],
                     specialQuality: "Made of metal",
                     instinct: "Follow orders",
                     moves: ["Eat Gems", "protect family"]
+                },
+                {
+                    name: "Spider Monkey",
+                    HP: 6,
+                    armor: 1,
+                    attack: {
+                        action: "Club",
+                        roll: "d8",
+                        extra: []
+                    },
+                    tags: ["group, intelligent, stealthy"],
+                    specialQuality: undefined,
+                    instinct: "Gather food",
+                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                },{
+                    name: "Blade Horror",
+                    HP: 9,
+                    armor: 4,
+                    attack: {
+                        action: "Slash",
+                        roll: "b[d8]+2",
+                        piercing: 3,
+                        extra: ["close, messy"]
+                    },
+                    tags: ["group, intelligent, terrifying"],
+                    specialQuality: "Made of metal",
+                    instinct: "Follow orders",
+                    moves: ["Eat Gems", "protect family"]
+                },
+                {
+                    name: "Spider Monkey",
+                    HP: 6,
+                    armor: 1,
+                    attack: {
+                        action: "Club",
+                        roll: "d8",
+                        extra: []
+                    },
+                    tags: ["group, intelligent, stealthy"],
+                    specialQuality: undefined,
+                    instinct: "Gather food",
+                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
                 }
             ],
             traps: [],
@@ -323,5 +368,21 @@ app.controller('encounterCtrl', function ($scope) {
         $scope.traps =  $scope.regions[$index].traps;
         $scope.treasures =  $scope.regions[$index].treasures;
     };
+
+    $scope.onMonsterEdit=function($index){
+        $scope.selectedMonster =  $scope.monsters[$index];
+    };
+
+    function generateMonster(generationParams){
+
+
+    }
+    $scope.onMonsterGenerate=function(generationParams){
+        $scope.selectedMonster.generated = true;
+        $scope.selectedMonster =  generateMonster(generationParams);
+    };
+
+
+
 
 });

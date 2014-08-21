@@ -7,7 +7,7 @@ app.controller('encounterCtrl', function ($scope) {
 
 
     $scope.selectedMonster={};
-
+    $scope.editMode = false;
     $scope.regions = [
         {
             name: "town",
@@ -370,6 +370,7 @@ app.controller('encounterCtrl', function ($scope) {
     };
 
     $scope.onMonsterEdit=function($index){
+        $scope.editMode= true;
         $scope.selectedMonster =  $scope.monsters[$index];
     };
 
@@ -381,6 +382,8 @@ app.controller('encounterCtrl', function ($scope) {
         $scope.selectedMonster.generated = true;
         $scope.selectedMonster =  generateMonster(generationParams);
     };
+
+
 
 
 

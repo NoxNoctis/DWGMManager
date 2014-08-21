@@ -41,7 +41,7 @@
     <div>Moves:</div>
     <div ng-repeat="move in selectedMonster.moves" ><input type="text" ng-model="move"><span onClick="removeMove($index)"></span></div>
 </div>
-<button ng-click="editableOK()">OK</button>
+<button ng-click="editableExit()">OK</button>
 <button ng-if="selectedMonster.generated" ng-click="reGenerate()">Generate</button>
 
 

@@ -8,6 +8,7 @@ app.controller('encounterCtrl', function ($scope) {
 
     $scope.selectedMonster={};
     $scope.editMode = false;
+    $scope.fightingMonsters=[];
     $scope.regions = [
         {
             name: "town",
@@ -359,6 +360,7 @@ app.controller('encounterCtrl', function ($scope) {
         }
     ];
 
+
     $scope.monsters = $scope.regions[0].monsters;
     $scope.traps = $scope.regions[0].traps;
     $scope.treasures = $scope.regions[0].treasures;
@@ -382,6 +384,17 @@ app.controller('encounterCtrl', function ($scope) {
         $scope.selectedMonster.generated = true;
         $scope.selectedMonster =  generateMonster(generationParams);
     };
+
+    $scope.editableExit = function(){
+        $scope.editMode= false;
+    };
+
+    $scope.fightMonster=function($index){
+        $scope.fightingMonsters.push(jQuery.extend({id:$scope.fightingMonsters.length}, $scope.monsters[$index]));
+    };
+    $scope.removeMonster = function($index){
+        $scope.fightingMonsters.splice($index,1);
+    }
 
 
 

@@ -92,7 +92,7 @@ body {
     width: 100px;
     left: -95px;
     z-index: 1;
-    top: 100px;
+    top: 20%;
     background: darkgrey;
     cursor: pointer;
 
@@ -114,4 +114,20 @@ body {
 .sideMenu > ul > li {
     list-style: none;
     padding: 10px 0;
+}
+
+.monster-edit{
+    background: #cab15c;
+    position: fixed;
+    top: 200px;
+    left: 15%;
+    width: 70%;
+    border: solid 2px;
+    padding: 20px;
+}
+
+.fight-arena{
+    background: darkred;
+    overflow-x: scroll;
+    transition: all 450ms ease;
 }

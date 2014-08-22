@@ -13,7 +13,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('Chars', {
             url: '/Chars',
-            templateUrl: 'templates/Characters.html'
+            templateUrl: 'templates/Characters.html',
+            controller:'charsCtrl'
         })
         .state('Moves', {
             url: '/Moves',

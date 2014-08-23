@@ -2,7 +2,7 @@
  * Created by Alex on 22/08/2014.
  */
 
-app.controller('charsCtrl', function ($scope, $dataCollector, _) {
+app.controller('charsCtrl', function ($scope, $dataCollector) {
 
     $scope.PCs = $dataCollector.getPCs();
     $scope.debilities=$dataCollector.getDebilities();

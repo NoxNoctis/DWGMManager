@@ -5,10 +5,6 @@
 app.controller('encounterCtrl', function ($scope) {
 
 
-
-    $scope.selectedMonster={};
-    $scope.editMode = false;
-    $scope.fightingMonsters=[];
     $scope.regions = [
         {
             name: "town",
@@ -359,6 +355,10 @@ app.controller('encounterCtrl', function ($scope) {
             treasures: []
         }
     ];
+    $scope.selectedMonster={};
+    $scope.editMode = false;
+    $scope.fightingMonsters=[];
+
 
 
     $scope.monsters = $scope.regions[0].monsters;

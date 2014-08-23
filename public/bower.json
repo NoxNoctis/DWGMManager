@@ -6,7 +6,8 @@
         "jquery": "latest",
         "angular": "latest",
         "angular-bootstrap":"latest",
-        "angular-ui-router":"latest"
+        "angular-ui-router":"latest",
+        "lodash":"2.4.1"
     },
     "private": true
 }

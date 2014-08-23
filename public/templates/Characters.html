@@ -38,7 +38,7 @@
                 <span>Drive: {{pc.drive}}</span>
             </div>
             <div>
-                Moves:
+                Moves: <button ng-click="addMoveTo(pc)">Add move</button>
                 <ul>
                     <li ng-repeat="move in pc.class.moves">
                         {{move.name}}:

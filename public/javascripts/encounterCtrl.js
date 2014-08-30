@@ -5,239 +5,254 @@
 app.controller('encounterCtrl', function ($scope) {
 
 
-
-    $scope.selectedMonster={};
-    $scope.editMode = false;
-    $scope.fightingMonsters=[];
     $scope.regions = [
         {
-            name: "town",
+            name: 'region 1',
             monsters: [
                 {
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },
                 {
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },{
-                    name: "Blade Horror",
-                    HP: 9,
-                    armor: 4,
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
                     attack: {
-                        action: "Slash",
-                        roll: "b[d8]+2",
-                        piercing: 3,
-                        extra: ["close, messy"]
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
                 },
                 {
-                    name: "Spider Monkey",
-                    HP: 6,
+                    name: "Skeleton",
+                    HP: 7,
                     armor: 1,
                     attack: {
-                        action: "Club",
-                        roll: "d8",
-                        extra: []
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
                     },
-                    tags: ["group, intelligent, stealthy"],
-                    specialQuality: undefined,
-                    instinct: "Gather food",
-                    moves: ["Ambush", "Ensnare with Webs", "Fight with improvised weapons"]
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
+                },{
+                    name: 'Dragon',
+                    HP: 16,
+                    armor: 5,
+                    attack: {
+                        action: 'Bite',
+                        roll: 'b[2d12]+5',
+                        piercing: 4,
+                        extra: ['Reach', 'Messy']
+                    },
+                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    specialQuality: 'Elemental blood, Wings',
+                    instinct: 'To rule',
+                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
+                },
+                {
+                    name: "Skeleton",
+                    HP: 7,
+                    armor: 1,
+                    attack: {
+                        action: "Slam",
+                        roll: "d6",
+                        extra: ['Close']
+                    },
+                    tags: ["Horde"],
+                    instinct: "To take the semblance of life",
+                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 }
             ],
             traps: [],
@@ -255,10 +270,10 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
                 },
                 {
                     name: "fdsfds fdsfdsf",
@@ -269,12 +284,11 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
-                },
-                {
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
+                }, {
                     name: "fdsfds fdsfdsf",
                     HP: 9,
                     armor: 4,
@@ -283,12 +297,11 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
-                },
-                {
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
+                }, {
                     name: "fdsfds fdsfdsf",
                     HP: 9,
                     armor: 4,
@@ -297,12 +310,11 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
-                },
-                {
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
+                }, {
                     name: "fdsfds fdsfdsf",
                     HP: 9,
                     armor: 4,
@@ -311,12 +323,11 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
-                },
-                {
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
+                }, {
                     name: "fdsfds fdsfdsf",
                     HP: 9,
                     armor: 4,
@@ -325,10 +336,10 @@ app.controller('encounterCtrl', function ($scope) {
                         roll: "b[d8]+2, +3 piercing",
                         extra: ["cloddse, mesffsy"]
                     },
-                    tags: ["group, intelligent, terrifying"],
-                    specialQuality: "Made of metal",
-                    instinct: "Follow orders",
-                    moves: ["Eat Gems", "protect family"]
+                    tags: ["fds, ser, vsd"],
+                    specialQuality: "cxvwerads",
+                    instinct: "vcxa",
+                    moves: ["fdsa", "few    qcsxd"]
                 }
             ],
             raps: [],
@@ -357,48 +368,80 @@ app.controller('encounterCtrl', function ($scope) {
             monsters: [],
             raps: [],
             treasures: []
+        },
+        {
+            name: "region 7",
+            monsters: [],
+            raps: [],
+            treasures: []
+        },
+        {
+            name: "region 8",
+            monsters: [],
+            raps: [],
+            treasures: []
+        },
+        {
+            name: "region 9",
+            monsters: [],
+            raps: [],
+            treasures: []
+        },
+        {
+            name: "region 10",
+            monsters: [],
+            raps: [],
+            treasures: []
         }
+
     ];
+    $scope.selectedMonster = {};
+    $scope.editMode = false;
+    $scope.fightingMonsters = [];
+
 
 
     $scope.monsters = $scope.regions[0].monsters;
     $scope.traps = $scope.regions[0].traps;
     $scope.treasures = $scope.regions[0].treasures;
 
-    $scope.onRegionClick=function($index){
-        $scope.monsters =  $scope.regions[$index].monsters;
-        $scope.traps =  $scope.regions[$index].traps;
-        $scope.treasures =  $scope.regions[$index].treasures;
+    $scope.onRegionClick = function ($index) {
+        $scope.monsters = $scope.regions[$index].monsters;
+        $scope.traps = $scope.regions[$index].traps;
+        $scope.treasures = $scope.regions[$index].treasures;
     };
 
-    $scope.onMonsterEdit=function($index){
-        $scope.editMode= true;
-        $scope.selectedMonster =  $scope.monsters[$index];
+    $scope.onMonsterEdit = function ($index) {
+        $scope.editMode = true;
+        $scope.selectedMonster = $scope.monsters[$index];
     };
 
-    function generateMonster(generationParams){
+    function generateMonster(generationParams) {
+        return {};
 
 
     }
-    $scope.onMonsterGenerate=function(generationParams){
+
+    $scope.onMonsterGenerate = function (generationParams) {
+        $scope.editMode = true;
+        $scope.selectedMonster = generateMonster(generationParams);
         $scope.selectedMonster.generated = true;
-        $scope.selectedMonster =  generateMonster(generationParams);
     };
 
-    $scope.editableExit = function(){
-        $scope.editMode= false;
+    $scope.editableExit = function () {
+        if ($scope.selectedMonster.generated) {
+            delete $scope.selectedMonster.generated;
+            $scope.monsters.push($scope.selectedMonster);
+        }
+        $scope.editMode = false;
     };
 
-    $scope.fightMonster=function($index){
-        $scope.fightingMonsters.push(jQuery.extend({id:$scope.fightingMonsters.length}, $scope.monsters[$index]));
+    $scope.fightMonster = function ($index) {
+        $scope.fightingMonsters.push(jQuery.extend({id: $scope.fightingMonsters.length}, $scope.monsters[$index]));
     };
-    $scope.removeMonster = function($index){
-        $scope.fightingMonsters.splice($index,1);
+    $scope.removeMonster = function ($index) {
+        $scope.fightingMonsters.splice($index, 1);
     }
-
-
-
-
 
 
 });

@@ -71,14 +71,61 @@ body {
 
 /*encounters*/
 .monster-descriptor {
-    display: inline-block;
-    margin: 20px;
-    width: 28%;
+    /*display: inline-block;*/
+    /*margin: 20px;*/
     min-width: 300px;
-    height: 250px;
-    border-radius: 20px;
+    /*width:28%;*/
+    padding: 15px;
+    height: 270px;
+    border-radius: 15px;
     border: solid 1px black;
     background: #cab15c;
+    margin-left:30px;
+    margin-top: 20px ;
+    width: calc(33% - 30px); /* css3 calculation */
+}
+
+.fight-btn{
+    bottom: 10px;
+}
+
+h2{
+    margin-top: 10px;
+}
+
+.edit-btn{
+    background: #a8acac ;
+}
+.edit-btn:before{
+     background-image: url('../images/16294.png');
+
+}
+
+
+.pic-btn{
+    background: #a8acac url('../images/can-stock-photo_csp13748001.png') no-repeat;
+}
+
+.monster-descriptor-btn{
+    /*background: url('../images/120px-Quill_icon_-_Noun_Project_13454.svg.png') no-repeat;*/
+    /*background: url('../images/school_icons_feather_icon-512.png') no-repeat;*/
+    /*background: url('../images/images.jpg') no-repeat;*/
+    background-size: 21px;
+    height: 25px;
+    width: 25px;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid 1px #806a40;
+}
+
+.monster-descriptor-btn:hover{
+    background-color: #888c8c;
+}
+.monster-descriptor-btn:active{
+    background-color: #707474;
 }
 
 .encounter-generator{

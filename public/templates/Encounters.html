@@ -1,59 +1,86 @@
-        <tabset>
-            <tab heading="monsters" class="tab-pane">
-                <div ng-if="fightingMonsters.length > 0" class="fight-arena">
-                    <div class="h1">Fight!</div>
-                    <div ng-repeat="monster in fightingMonsters track by $index" class="monster-descriptor">
-                        <div><input type="text" ng-model="monster.name"></div>
-                        <div>HP: <input type="number" ng-model="monster.HP"></div>
-                        <div>armor: {{monster.armor}}</div>
-                        <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)</div>
-                        <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
-                        <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
-                        <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
-                        <div>instinct: {{monster.instinct}}</div>
-                        <div><ul><li ng-repeat="move in monster.moves">{{move}}</li></ul></div>
-                        <button ng-click="removeMonster($index)">Dead!</button>
-                    </div>
+<tabset>
+    <tab heading="monsters" class="tab-pane">
+        <div ng-if="fightingMonsters.length > 0" class="fight-arena">
+            <div class="h1">Fight!</div>
+            <div ng-repeat="monster in fightingMonsters track by $index" class="monster-descriptor">
+                <div><input type="text" ng-model="monster.name"></div>
+                <div>HP: <input type="number" ng-model="monster.HP"></div>
+                <div>armor: {{monster.armor}}</div>
+                <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
                 </div>
-                <div ng-repeat="monster in monsters" class="monster-descriptor">
-                    <button ng-click="onMonsterEdit($index)">edit</button>
-                    <button>pic</button>
-                    <div>{{monster.name}}</div>
-                    <div>HP {{monster.HP}}</div>
-                    <div>armor: {{monster.armor}}</div>
-                    <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)</div>
-                    <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
-                    <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
-                    <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
-                    <div>instinct: {{monster.instinct}}</div>
-                    <div><ul><li ng-repeat="move in monster.moves">{{move}}</li></ul></div>
-                    <button  ng-click="fightMonster($index)">Fight!</button>
+                <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
+                <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
+                <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
+                <div>instinct: {{monster.instinct}}</div>
+                <div>
+                    <ul>
+                        <li ng-repeat="move in monster.moves">{{move}}</li>
+                    </ul>
                 </div>
-                <button class="btn btn-primary encounter-generator">Generate</button>
-            </tab>
-            <tab heading="traps" class="tab-pane">
-                <div ng-repeat="trap in traps" class="trap-descriptor">
-                    <button>edit</button>
-                    <div>{{trap.name}}</div>
-                    <div>HP {{monster.HP}}</div>
-                    <div>armor: {{monster.armor}}</div>
-                    <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)</div>
-                    <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
-                    <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
-                    <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
-                    <div>instinct: {{monster.instinct}}</div>
-                    <div><ul><li ng-repeat="move in monster.moves">{{move}}</li></ul></div>
-                    <button>Fight!</button>
-                </div>
-            </tab>
-            <tab heading="treasures" class="tab-pane"></tab>
-        </tabset>
-        <div class="sideMenu">
-            <ul>
-                <li ng-repeat="region in regions" ng-click="onRegionClick($index)">
-                                                  {{region.name}}
-                </li>
-            </ul>
+                <button ng-click="removeMonster($index)">Dead!</button>
             </div>
-                <div ng-if="editMode" ng-include="'templates/editableMonster.html'" class="monster-edit">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div ng-repeat="monster in monsters" class="monster-descriptor col-md-4 container">
+                    <ul class="pull-right list-unstyled">
+                        <li><div class="monster-descriptor-btn edit-btn" ng-click="onMonsterEdit($index)"></div></li>
+                        <li><div class="monster-descriptor-btn pic-btn"></div></li>
+                    </ul>
+                    <h2>{{monster.name}}</h2>
+                    <div class="row">
+                        <div class="col-md-3"><strong>HP </strong>{{monster.HP}}</div>
+                        <div class="col-md-3"><strong>armor: </strong>{{monster.armor}}</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-10">{{monster.attack.action}} ({{monster.attack.roll}} dmg <span
+                            ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
+                       </div>
+                    </div>
+                    <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
+                    <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
+                    <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}</div>
+                    <div><strong>instinct: </strong>{{monster.instinct}}</div>
+                    <div>
+                        <ul>
+                            <li ng-repeat="move in monster.moves">{{move}}</li>
+                        </ul>
+                    </div>
+                    <button class="center-block fight-btn" ng-click="fightMonster($index)">Fight!</button>
                 </div>
+            </div>
+        </div>
+        <button class="btn btn-primary encounter-generator" ng-click="onMonsterGenerate()">Generate</button>
+        <div ng-if="editMode" ng-include="'templates/editableMonster.html'" class="monster-edit">
+        </div>
+    </tab>
+    <tab heading="traps" class="tab-pane">
+        <div ng-repeat="trap in traps" class="trap-descriptor">
+            <button>edit</button>
+            <div>{{trap.name}}</div>
+            <div>HP {{monster.HP}}</div>
+            <div>armor: {{monster.armor}}</div>
+            <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
+            </div>
+            <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
+            <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
+            <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
+            <div>instinct: {{monster.instinct}}</div>
+            <div>
+                <ul>
+                    <li ng-repeat="move in monster.moves">{{move}}</li>
+                </ul>
+            </div>
+            <button>Fight!</button>
+        </div>
+    </tab>
+    <tab heading="treasures" class="tab-pane"></tab>
+</tabset>
+<div class="sideMenu">
+    <ul>
+        <li ng-repeat="region in regions" ng-click="onRegionClick($index)">
+            {{region.name}}
+        </li>
+    </ul>
+</div>
+

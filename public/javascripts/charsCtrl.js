@@ -7,10 +7,20 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
     $scope.PCs = $dataCollector.getPCs();
     $scope.debilities=$dataCollector.getDebilities();
 
-
     $scope.getMaxHp=function(char){
-            return char.class.baseHP + char.stats.CON;
+        var CON = _.find(char.stats,function(stat){
+            return stat.name == 'CON';
+        });
+            return char.class.baseHP + CON.value;
     };
+
+    $scope.getMaxLoad=function(char){
+        var STR = _.find(char.stats,function(stat){
+            return stat.name == 'STR';
+        });
+        return char.class.baseMaxLoad + $scope.getModifier(STR);
+    };
+
     $scope.getModifier=function(stat, debility){
         var mod = debility?-1:0;
         if(stat < 9)
@@ -54,8 +64,15 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
            return !_.contains(pc.class.moves, move)
        });
 
-
-   }
+   };
+        $scope.addItemTo=function(pc){
+        pc.inventory.push(
+            {
+                name:'',
+                quantity:0,
+                weight:0
+            });
+    }
 
 
 });

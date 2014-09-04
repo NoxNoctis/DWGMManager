@@ -15,48 +15,78 @@
 
 <tabset>
     <tab heading="PCs" class="tab-pane">
-        <div ng-repeat="pc in PCs">
-            <div><span>Name: {{pc.name}}    </span><span>Race: {{pc.race}}</span>
+        <div ng-repeat="pc in PCs" class="container pc">
+            <div class="row">
+                <div class="col-md-3">Name: {{pc.name}}</div>
+                <div class="col-md-3">Race: {{pc.race}}</div>
             </div>
-            <div><span>Class: {{pc.class.name}}    </span><span>level: {{getLevelByXp(pc.xp)}} </span>
+            <div class="row">
+                <div class="col-md-2">Class: {{pc.class.name}}</div>
+                <div class="col-md-2">level: {{getLevelByXp(pc.xp)}}</div>
+                <div class="col-md-4">XP: <input type="number" ng-model="pc.xp" class="num"> ({{getRemainderXp(pc.xp)}} to next
+                    level)
+                </div>
             </div>
-            <div><span>XP: <input type="number" ng-model="pc.xp"></span>
-                <span>({{getRemainderXp(pc.xp)}} to next level)</span>
+            <div class="row">
+                <div class="col-md-2">Damage: {{pc.class.damage}}</div>
+                <div class="col-md-2">Armor: {{pc.armor}}</div>
+                <div class="col-md-4">HP: <input type="number" ng-model="pc.hp" class="num" ng-init="pc.hp=getMaxHp(pc)"> of
+                    {{getMaxHp(pc)}}
+                </div>
             </div>
-            <div><span>Damage: {{pc.class.damage}} </span><span>Armor: {{pc.armor}} </span><span>HP:
-                <input type="number" ng-model="pc.hp" ng-init="pc.hp=getMaxHp(pc)"> of {{getMaxHp(pc)}}</span>
-            </div>
-            <div>
-                <ul>
-                    <li ng-repeat="(stat, val) in pc.stats">
-                        {{stat}}: {{val}} (<span ng-if="getModifier(val)>0">+</span>{{getModifier(val,debility)}})
-                        <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat]}}
-                    </li>
-                </ul>
+            <div class="row">
+                <!--<ul class="list-unstyled">-->
+                <!--<li class="dl-horizontal" ng-repeat="stat in pc.stats">-->
+                <!--{{stat.name}} <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat.name]}}-->
+                <!--{{stat.value}} (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})-->
+
+                <!--</li>-->
+                <!--</ul>-->
+                <div class="col-md-1" ng-repeat="stat in pc.stats">
+                    <div>{{stat.value}} (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
+                    </div>
+                    <div> <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat.name]}}
+                    </div>
+                    <div>{{stat.name}}</div>
+                </div>
             </div>
             <div>
                 <span>Drive: {{pc.drive}}</span>
             </div>
-            <div>
-                Moves: <button ng-click="addMoveTo(pc)">Add move</button>
-                <ul>
-                    <li ng-repeat="move in pc.class.moves">
-                        {{move.name}}:
-                        <p>{{move.desc}}</p>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                Inventory: (load: {{totalWeight(pc.inventory)}} of {{pc.class.baseMaxLoad + pc.stats.STR}})
-                <table>
-                    <thead><td>Name</td><td>Uses</td><td>Weight</td><td>Value</td></thead>
-                    <tr ng-repeat="item in pc.inventory">
-                       <td>{{item.name}}<td><td>{{item.quantity}}</td><td><span ng-if="item.weight>0">{{item.weight}}</span></td><td>{{item.price}}</td>
-                    </tr>
-                </table>
-            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    Moves:
+                    <button ng-click="addMoveTo(pc)">Add move</button>
+                    <dl>
+                        <dt ng-repeat-start="move in pc.class.moves" ng-click="showDesc=!showDesc"
+                            ng-init="showDesc=false" >
+                            <!--tooltip="{{move.desc}}">-->
+                            {{move.name}}
+                        </dt>
+                        <dd ng-repeat-end ng-show="showDesc">{{move.desc}}
+                        </dd>
 
-
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    Inventory: (load: {{totalWeight(pc.inventory)}} of {{getMaxLoad(pc)}})
+                    <span ng-click="addItemTo(pc)">(+)</span>
+                    <table>
+                        <thead>
+                        <td>Name</td>
+                        <td>Uses</td>
+                        <td>Weight</td>
+                        <td>Value</td>
+                        </thead>
+                        <tr ng-repeat="item in pc.inventory">
+                            <td ng-editable-cell="item.name" type="text" class="name"></td>
+                            <td ng-editable-cell="item.quantity" type="number"></td>
+                            <td ng-editable-cell="item.weight" type="number"></td>
+                            <td ng-editable-cell="item.price" type="number"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
         </div>
     </tab>

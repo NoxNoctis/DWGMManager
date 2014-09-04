@@ -1,14 +1,14 @@
 <div>
     <label>Name: <input type="text" ng-model="selectedMonster.name"></label>
 </div>
-<div><label>HP: <input type="number" ng-model="selectedMonster.HP"></label>
-    <label> Armor: <input type="number" ng-model="selectedMonster.armor"></label>
+<div><label>HP: <input type="number" ng-model="selectedMonster.HP" class="num"></label>
+    <label> Armor: <input type="number" ng-model="selectedMonster.armor"  class="num"></label>
 </div>
 <div>Attack:</div>
 <div>
     <input type="text" ng-model="selectedMonster.attack.action">
     (<input type="text" ng-model="selectedMonster.attack.roll"> dmg +
-    <input type="number" ng-model="selectedMonster.attack.piercing"> piercing)
+    <input type="number" ng-model="selectedMonster.attack.piercing"  class="num"> piercing)
 </div>
 <div>
     <label>Attack tags:
@@ -36,10 +36,10 @@
     </label>
 </div>
 <div><label>Special Quality: <input type="text" ng-model="selectedMonster.specialQuality"></label></div>
-<div><label>Instinct: <input type="text" ng-model="selectedMonster.instinct"></label></div>
+<div><label>Instinct: <input type="text" ng-model="selectedMonster.instinct" class="desc"></label></div>
 <div>
     <div>Moves:</div>
-    <div ng-repeat="move in selectedMonster.moves" ><input type="text" ng-model="move"><span onClick="removeMove($index)"></span></div>
+    <div ng-repeat="move in selectedMonster.moves" ><input type="text" ng-model="move" class="desc"><span onClick="removeMove($index)"></span></div>
 </div>
 <button ng-click="editableExit()">OK</button>
 <button ng-if="selectedMonster.generated" ng-click="reGenerate()">Generate</button>

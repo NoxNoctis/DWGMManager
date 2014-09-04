@@ -87,6 +87,8 @@ body {
 
 .fight-btn{
     bottom: 10px;
+    position: absolute;
+    left: calc(50% - 30px);
 }
 
 h2{
@@ -101,6 +103,9 @@ h2{
 
 }
 
+.row{
+    padding-bottom: 10px;
+}
 
 .pic-btn{
     background: #a8acac url('../images/can-stock-photo_csp13748001.png') no-repeat;
@@ -177,4 +182,30 @@ h2{
     background: darkred;
     overflow-x: scroll;
     transition: all 450ms ease;
+}
+
+/*charachters*/
+.pc{
+   /*border: 1px solid #a8acac;*/
+}
+
+table > thead >tr{
+    font-weight: bold;
+}
+
+td{
+    padding-left: 20px;
+    text-align: center
+}
+td.name{
+    text-align:left;
+}
+
+
+input.num{
+    width: 3em;
+}
+
+input.desc{
+    width: 100%;
 }

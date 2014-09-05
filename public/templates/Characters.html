@@ -17,8 +17,8 @@
     <tab heading="PCs" class="tab-pane">
         <div ng-repeat="pc in PCs" class="container pc">
             <div class="row">
-                <div class="col-md-3">Name: {{pc.name}}</div>
-                <div class="col-md-3">Race: {{pc.race}}</div>
+                <div class="col-md-3">Name: <span ng-editable="pc.name" type="text"></span></div>
+                <div class="col-md-3">Race: <span ng-editable="pc.race" type="text"></span></div>
             </div>
             <div class="row">
                 <div class="col-md-2">Class: {{pc.class.name}}</div>
@@ -43,7 +43,7 @@
                 <!--</li>-->
                 <!--</ul>-->
                 <div class="col-md-1" ng-repeat="stat in pc.stats">
-                    <div>{{stat.value}} (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
+                    <div><span ng-editable="stat.value" type="number"></span> (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
                     </div>
                     <div> <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat.name]}}
                     </div>
@@ -56,38 +56,43 @@
             <div class="row">
                 <div class="col-md-6">
                     Moves:
-                    <button ng-click="addMoveTo(pc)">Add move</button>
+                    <div ng-click="addMoveTo(pc)">(+)</div>
                     <dl>
-                        <dt ng-repeat-start="move in pc.class.moves" ng-click="showDesc=!showDesc"
-                            ng-init="showDesc=false" >
-                            <!--tooltip="{{move.desc}}">-->
+                        <dt ng-repeat-start="move in pc.class.moves" ng-click="$parent.showDesc=!$parent.showDesc"
+                            tooltip="{{move.desc}}">
+                            <span ng-click="removeMove($index,pc)">(-)</span>
                             {{move.name}}
                         </dt>
-                        <dd ng-repeat-end ng-show="showDesc">{{move.desc}}
+                        <dd ng-repeat-end ng-show="showDesc" ng-init="showDesc=false">{{move.desc}}
                         </dd>
-
                     </dl>
+                    <div ng-show="moveEdit" class="move-edit">
+                         <div>Name: <input ></div>
+                         <div>Description: <input ></div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     Inventory: (load: {{totalWeight(pc.inventory)}} of {{getMaxLoad(pc)}})
                     <span ng-click="addItemTo(pc)">(+)</span>
                     <table>
                         <thead>
+                        <td></td>
                         <td>Name</td>
                         <td>Uses</td>
                         <td>Weight</td>
                         <td>Value</td>
                         </thead>
-                        <tr ng-repeat="item in pc.inventory">
-                            <td ng-editable-cell="item.name" type="text" class="name"></td>
-                            <td ng-editable-cell="item.quantity" type="number"></td>
-                            <td ng-editable-cell="item.weight" type="number"></td>
-                            <td ng-editable-cell="item.price" type="number"></td>
+                        <tr ng-repeat="item in pc.inventory" class="table-row">
+                            <td> <span ng-click="removeItem($index,pc)">(-)</span></td>
+                            <td ng-editable="item.name" type="text" class="cell name"></td>
+                            <td ng-editable="item.quantity" type="number" class="cell"></td>
+                            <td ng-editable="item.weight" type="number" class="cell"></td>
+                            <td ng-editable="item.price" type="number" class="cell"></td>
                         </tr>
                     </table>
                 </div>
             </div>
-
+               <div class="seperator"></div>
         </div>
     </tab>
     <tab heading="NPCs" class="tab-pane">

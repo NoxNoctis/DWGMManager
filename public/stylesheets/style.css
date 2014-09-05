@@ -193,14 +193,31 @@ table > thead >tr{
     font-weight: bold;
 }
 
-td{
-    padding-left: 20px;
-    text-align: center
-}
-td.name{
-    text-align:left;
+.table-row{
+
 }
 
+.cell{
+    padding-left: 20px;
+    text-align: center;
+    border: 1px black solid;
+
+}
+.cell.name{
+    text-align:left;
+    /*width: 100%;*/
+}
+
+.tooltip-inner{
+    max-width:500px !important;
+}
+
+.seperator{
+    height: 1px;
+    width: 100%;
+    background: #285e8e;
+    margin-bottom: 5px;
+}
 
 input.num{
     width: 3em;

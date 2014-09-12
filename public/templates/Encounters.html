@@ -8,8 +8,8 @@
                 <div>armor: {{monster.armor}}</div>
                 <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
                 </div>
-                <div><span ng-repeat="tag in monster.attack.extra">{{tag}}</span></div>
-                <div><span ng-repeat="tag in monster.tags">{{tag}}</span></div>
+                <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}}</span></div>
+                <div><span ng-repeat="tag in monster.tags">{{tag.name}}</span></div>
                 <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
                 <div>instinct: {{monster.instinct}}</div>
                 <div>
@@ -37,8 +37,8 @@
                             ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
                        </div>
                     </div>
-                    <div><span ng-repeat="tag in monster.attack.extra">{{tag}} </span></div>
-                    <div><span ng-repeat="tag in monster.tags">{{tag}} </span></div>
+                    <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}} </span></div>
+                    <div><span ng-repeat="tag in monster.tags">{{tag.name}} </span></div>
                     <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}</div>
                     <div><strong>instinct: </strong>{{monster.instinct}}</div>
                     <div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary encounter-generator" ng-click="onMonsterGenerate()">Generate</button>
+        <button class="btn btn-primary encounter-generator" ng-click="onMonsterGenerate()">New Monster</button>
         <div ng-if="editMode" ng-include="'templates/editableMonster.html'" class="monster-edit">
         </div>
     </tab>

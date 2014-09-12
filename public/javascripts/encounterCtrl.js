@@ -17,9 +17,24 @@ app.controller('encounterCtrl', function ($scope) {
                         action: 'Bite',
                         roll: 'b[2d12]+5',
                         piercing: 4,
-                        extra: ['Reach', 'Messy']
+                        extra: [{
+                            name:'Reach'
+                        }, {
+                            name:'Messy'
+                        }]
                     },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    tags: [{
+                        name:'Solitary'
+                    }
+                    , {
+                            name:'Huge'
+                        }, {
+                            name:'Terrifying'
+                        }, {
+                            name:'Cautious'
+                        }, {
+                            name: 'Hoarder'
+                        }],
                     specialQuality: 'Elemental blood, Wings',
                     instinct: 'To rule',
                     moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
@@ -31,9 +46,13 @@ app.controller('encounterCtrl', function ($scope) {
                     attack: {
                         action: "Slam",
                         roll: "d6",
-                        extra: ['Close']
+                        extra: [{
+                            name:'Close'
+                        }]
                     },
-                    tags: ["Horde"],
+                    tags: [{
+                        name:"Horde"
+                    }],
                     instinct: "To take the semblance of life",
                     moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 },
@@ -45,9 +64,24 @@ app.controller('encounterCtrl', function ($scope) {
                         action: 'Bite',
                         roll: 'b[2d12]+5',
                         piercing: 4,
-                        extra: ['Reach', 'Messy']
+                        extra: [{
+                            name:'Reach'
+                        }, {
+                            name:'Messy'
+                        }]
                     },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    tags: [{
+                        name:'Solitary'
+                    }
+                        , {
+                            name:'Huge'
+                        }, {
+                            name:'Terrifying'
+                        }, {
+                            name:'Cautious'
+                        }, {
+                            name: 'Hoarder'
+                        }],
                     specialQuality: 'Elemental blood, Wings',
                     instinct: 'To rule',
                     moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
@@ -59,12 +93,17 @@ app.controller('encounterCtrl', function ($scope) {
                     attack: {
                         action: "Slam",
                         roll: "d6",
-                        extra: ['Close']
+                        extra: [{
+                            name:'Close'
+                        }]
                     },
-                    tags: ["Horde"],
+                    tags: [{
+                        name:"Horde"
+                    }],
                     instinct: "To take the semblance of life",
                     moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
+                },
+                {
                     name: 'Dragon',
                     HP: 16,
                     armor: 5,
@@ -72,9 +111,24 @@ app.controller('encounterCtrl', function ($scope) {
                         action: 'Bite',
                         roll: 'b[2d12]+5',
                         piercing: 4,
-                        extra: ['Reach', 'Messy']
+                        extra: [{
+                            name:'Reach'
+                        }, {
+                            name:'Messy'
+                        }]
                     },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    tags: [{
+                        name:'Solitary'
+                    }
+                        , {
+                            name:'Huge'
+                        }, {
+                            name:'Terrifying'
+                        }, {
+                            name:'Cautious'
+                        }, {
+                            name: 'Hoarder'
+                        }],
                     specialQuality: 'Elemental blood, Wings',
                     instinct: 'To rule',
                     moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
@@ -86,12 +140,17 @@ app.controller('encounterCtrl', function ($scope) {
                     attack: {
                         action: "Slam",
                         roll: "d6",
-                        extra: ['Close']
+                        extra: [{
+                            name:'Close'
+                        }]
                     },
-                    tags: ["Horde"],
+                    tags: [{
+                        name:"Horde"
+                    }],
                     instinct: "To take the semblance of life",
                     moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
+                },
+                {
                     name: 'Dragon',
                     HP: 16,
                     armor: 5,
@@ -99,9 +158,24 @@ app.controller('encounterCtrl', function ($scope) {
                         action: 'Bite',
                         roll: 'b[2d12]+5',
                         piercing: 4,
-                        extra: ['Reach', 'Messy']
+                        extra: [{
+                            name:'Reach'
+                        }, {
+                            name:'Messy'
+                        }]
                     },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
+                    tags: [{
+                        name:'Solitary'
+                    }
+                        , {
+                            name:'Huge'
+                        }, {
+                            name:'Terrifying'
+                        }, {
+                            name:'Cautious'
+                        }, {
+                            name: 'Hoarder'
+                        }],
                     specialQuality: 'Elemental blood, Wings',
                     instinct: 'To rule',
                     moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
@@ -113,144 +187,13 @@ app.controller('encounterCtrl', function ($scope) {
                     attack: {
                         action: "Slam",
                         roll: "d6",
-                        extra: ['Close']
+                        extra: [{
+                            name:'Close'
+                        }]
                     },
-                    tags: ["Horde"],
-                    instinct: "To take the semblance of life",
-                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
-                    name: 'Dragon',
-                    HP: 16,
-                    armor: 5,
-                    attack: {
-                        action: 'Bite',
-                        roll: 'b[2d12]+5',
-                        piercing: 4,
-                        extra: ['Reach', 'Messy']
-                    },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
-                    specialQuality: 'Elemental blood, Wings',
-                    instinct: 'To rule',
-                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
-                },
-                {
-                    name: "Skeleton",
-                    HP: 7,
-                    armor: 1,
-                    attack: {
-                        action: "Slam",
-                        roll: "d6",
-                        extra: ['Close']
-                    },
-                    tags: ["Horde"],
-                    instinct: "To take the semblance of life",
-                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
-                    name: 'Dragon',
-                    HP: 16,
-                    armor: 5,
-                    attack: {
-                        action: 'Bite',
-                        roll: 'b[2d12]+5',
-                        piercing: 4,
-                        extra: ['Reach', 'Messy']
-                    },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
-                    specialQuality: 'Elemental blood, Wings',
-                    instinct: 'To rule',
-                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
-                },
-                {
-                    name: "Skeleton",
-                    HP: 7,
-                    armor: 1,
-                    attack: {
-                        action: "Slam",
-                        roll: "d6",
-                        extra: ['Close']
-                    },
-                    tags: ["Horde"],
-                    instinct: "To take the semblance of life",
-                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
-                    name: 'Dragon',
-                    HP: 16,
-                    armor: 5,
-                    attack: {
-                        action: 'Bite',
-                        roll: 'b[2d12]+5',
-                        piercing: 4,
-                        extra: ['Reach', 'Messy']
-                    },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
-                    specialQuality: 'Elemental blood, Wings',
-                    instinct: 'To rule',
-                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
-                },
-                {
-                    name: "Skeleton",
-                    HP: 7,
-                    armor: 1,
-                    attack: {
-                        action: "Slam",
-                        roll: "d6",
-                        extra: ['Close']
-                    },
-                    tags: ["Horde"],
-                    instinct: "To take the semblance of life",
-                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
-                    name: 'Dragon',
-                    HP: 16,
-                    armor: 5,
-                    attack: {
-                        action: 'Bite',
-                        roll: 'b[2d12]+5',
-                        piercing: 4,
-                        extra: ['Reach', 'Messy']
-                    },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
-                    specialQuality: 'Elemental blood, Wings',
-                    instinct: 'To rule',
-                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
-                },
-                {
-                    name: "Skeleton",
-                    HP: 7,
-                    armor: 1,
-                    attack: {
-                        action: "Slam",
-                        roll: "d6",
-                        extra: ['Close']
-                    },
-                    tags: ["Horde"],
-                    instinct: "To take the semblance of life",
-                    moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
-                },{
-                    name: 'Dragon',
-                    HP: 16,
-                    armor: 5,
-                    attack: {
-                        action: 'Bite',
-                        roll: 'b[2d12]+5',
-                        piercing: 4,
-                        extra: ['Reach', 'Messy']
-                    },
-                    tags: ['Solitary', 'Huge', 'Terrifying', 'Cautious', 'Hoarder'],
-                    specialQuality: 'Elemental blood, Wings',
-                    instinct: 'To rule',
-                    moves: ['Bend an element to its will', 'Demand tribute', 'Act with disdain']
-                },
-                {
-                    name: "Skeleton",
-                    HP: 7,
-                    armor: 1,
-                    attack: {
-                        action: "Slam",
-                        roll: "d6",
-                        extra: ['Close']
-                    },
-                    tags: ["Horde"],
+                    tags: [{
+                        name:"Horde"
+                    }],
                     instinct: "To take the semblance of life",
                     moves: ["Act out what it did in life", "Snuff out the warmth of life", "Reconstruct from miscellaneous bones"]
                 }
@@ -399,6 +342,41 @@ app.controller('encounterCtrl', function ($scope) {
     $scope.editMode = false;
     $scope.fightingMonsters = [];
 
+    $scope.monsterTags=[
+        {
+            name:"Horde"
+        },
+        {
+            name:"Group"
+        },
+        {
+            name:"Solitary"
+        },
+        {
+            name:"Huge"
+        }
+        ,
+        {
+            name:"Large"
+        }];
+    $scope.monsterAttackTags=[
+        {
+            name:"Hand"
+        },
+        {
+            name:"Close"
+        },
+        {
+            name:"Reach"
+        },
+        {
+            name:"Messy"
+        }
+        ,
+        {
+            name:"Forceful"
+        }];
+
 
 
     $scope.monsters = $scope.regions[0].monsters;
@@ -414,18 +392,28 @@ app.controller('encounterCtrl', function ($scope) {
     $scope.onMonsterEdit = function ($index) {
         $scope.editMode = true;
         $scope.selectedMonster = $scope.monsters[$index];
+        angular.forEach($scope.monsterTags, function(tag){
+            tag.selected =  angular.isDefined(_.find($scope.selectedMonster.tags, function(mTag){return tag.name == mTag.name}));
+        });
+        angular.forEach($scope.monsterAttackTags, function(tag){
+            tag.selected =  angular.isDefined(_.find($scope.selectedMonster.attack.extra, function(mTag){return tag.name == mTag.name}));
+        });
     };
 
     function generateMonster(generationParams) {
         return {};
-
-
     }
 
     $scope.onMonsterGenerate = function (generationParams) {
         $scope.editMode = true;
         $scope.selectedMonster = generateMonster(generationParams);
         $scope.selectedMonster.generated = true;
+        angular.forEach($scope.monsterTags, function(tag){
+            tag.selected=false;
+        });
+        angular.forEach($scope.monsterAttackTags, function(tag){
+            tag.selected=false;
+        });
     };
 
     $scope.editableExit = function () {

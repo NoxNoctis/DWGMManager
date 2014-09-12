@@ -2,7 +2,7 @@
  * Created by Alex on 08/08/2014.
  */
 
-var app = angular.module("dungeon-world-game-master", ['ui.bootstrap', 'ui.router', 'monospaced.mousewheel']);
+var app = angular.module("dungeon-world-game-master", ['ui.bootstrap', 'ui.router', 'monospaced.mousewheel', 'multi-select']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider

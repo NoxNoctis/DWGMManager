@@ -96,10 +96,11 @@ h2{
 }
 
 .edit-btn{
-    background: #a8acac ;
+    background: #a8acac url('../images/16294.png')no-repeat;
+
 }
 .edit-btn:before{
-     background-image: url('../images/16294.png');
+     /*background-image: url('../images/16294.png');*/
 
 }
 
@@ -109,6 +110,7 @@ h2{
 
 .pic-btn{
     background: #a8acac url('../images/can-stock-photo_csp13748001.png') no-repeat;
+    position: absolute;
 }
 
 .monster-descriptor-btn{

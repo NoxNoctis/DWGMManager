@@ -45,7 +45,9 @@
                 <div class="col-md-1" ng-repeat="stat in pc.stats">
                     <div><span ng-editable="stat.value" type="number"></span> (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
                     </div>
-                    <div> <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat.name]}}
+                    <div class="debility" ng-click="debility=!debility">
+                        <input type="checkbox" ng-click="$event.stopPropagation()" ng-model="debility" ng-init="debility=false">
+                        <span>{{debilities[stat.name]}}</span>
                     </div>
                     <div>{{stat.name}}</div>
                 </div>

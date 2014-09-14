@@ -208,6 +208,16 @@ table > thead >tr{
     /*width: 100%;*/
 }
 
+.debility{
+    cursor: pointer;
+}
+.debility > span{
+    font-size: small;
+}
+.debility > input{
+    width: 10px;
+}
+
 .tooltip-inner{
     max-width:500px !important;
 }
@@ -226,3 +236,4 @@ input.num{
 input.desc{
     width: 100%;
 }
+

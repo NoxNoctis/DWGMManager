@@ -55,7 +55,12 @@
                 <!--Moves-->
                 <div class="col-md-6">
                     Moves:
-                    <div ng-click="addMoveTo(pc)">(+)</div>
+                    <span ng-click="moveSelect = !moveSelect" ng-init="moveSelect=false">(+)</span>
+                    <!--<select ng-show="moveSelect">-->
+                        <!--<option ng-repeat="move in getAvailableMoves(pc)" ng-click="$parent.moveSelect=false">-->
+                            <!--{{move.name}}-->
+                        <!--</option>-->
+                    <!--</select>-->
                     <dl>
                         <dt ng-repeat-start="move in pc.class.moves" ng-click="$parent.showDesc=!$parent.showDesc"
                             tooltip="{{move.desc}}">
@@ -65,10 +70,6 @@
                         <dd ng-repeat-end ng-show="showDesc" ng-init="showDesc=false">{{move.desc}}
                         </dd>
                     </dl>
-                    <div ng-show="moveEdit" class="move-edit">
-                         <div>Name: <input ></div>
-                         <div>Description: <input ></div>
-                    </div>
                 </div>
                 <!--Inventory-->
                 <div class="col-md-6">
@@ -95,7 +96,6 @@
                     <div ng-grid="getInventoryGridOption(pc.inventory, $index)" class="gridStyle"></div>
                 </div>
             </div>
-
             <div ng-if="!$last" class="separator"></div>
         </div>
     </tab>

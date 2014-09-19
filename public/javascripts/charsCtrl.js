@@ -61,13 +61,16 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         return res;
     };
 
-    $scope.addMoveTo = function (pc) {
+    $scope.addMoveTo = function (pc, move) {
+        pc.class.moves.push(move);
+    };
+
+    $scope.getAvailableMoves = function(pc){
         var advancedMoves = $dataCollector.getClass(pc.class.name).moves.advanced;
         var availableMoves = _.filter(advancedMoves, function (move) {
             return !_.contains(pc.class.moves, move)
         });
-
-
+        return availableMoves;
     };
     $scope.removeMove = function (moveIndex, pc) {
         pc.class.moves.splice(moveIndex, 1);

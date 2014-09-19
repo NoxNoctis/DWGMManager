@@ -12,7 +12,24 @@
 
 <body ng-controller="mainCtrl">
 <ng-include src="'templates/header.html'"></ng-include>
-<div ui-view class="view"></div>
+<tabset class="tabsetClass">
+    <tab heading="Maps" class="tabClass">
+        <ng-include src="'templates/Maps.html'" ng-controller="mapCtrl"></ng-include>
+    </tab>
+    <tab heading="Chars" class="tabClass">
+        <ng-include src="'templates/Characters.html'" ng-controller="charsCtrl"></ng-include>
+    </tab>
+    <tab heading="Moves" class="tabClass">
+        <ng-include src="'templates/Moves.html'"></ng-include>
+    </tab>
+    <tab heading="Plots" class="tabClass">
+        <ng-include src="'templates/Plots.html'"></ng-include>
+    </tab>
+    <tab heading="Encounters" class="tabClass">
+        <ng-include src="'templates/Encounters.html'" ng-controller="encounterCtrl"></ng-include>
+    </tab>
+</tabset>
+<!--<div ui-view class="view"></div>-->
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>

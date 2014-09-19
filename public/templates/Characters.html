@@ -16,6 +16,7 @@
 <tabset>
     <tab heading="PCs" class="tab-pane">
         <div ng-repeat="pc in PCs" class="container pc">
+            <!--Basic Info-->
             <div class="row">
                 <div class="col-md-3">Name: <span ng-editable="pc.name" type="text"></span></div>
                 <div class="col-md-3">Race: <span ng-editable="pc.race" type="text"></span></div>
@@ -34,14 +35,8 @@
                     {{getMaxHp(pc)}}
                 </div>
             </div>
+            <!--Abilities-->
             <div class="row">
-                <!--<ul class="list-unstyled">-->
-                <!--<li class="dl-horizontal" ng-repeat="stat in pc.stats">-->
-                <!--{{stat.name}} <input type="checkbox" ng-model="debility" ng-init="debility=false">{{debilities[stat.name]}}-->
-                <!--{{stat.value}} (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})-->
-
-                <!--</li>-->
-                <!--</ul>-->
                 <div class="col-md-1" ng-repeat="stat in pc.stats">
                     <div><span ng-editable="stat.value" type="number"></span> (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
                     </div>
@@ -55,7 +50,9 @@
             <div>
                 <span>Drive: {{pc.drive}}</span>
             </div>
+
             <div class="row">
+                <!--Moves-->
                 <div class="col-md-6">
                     Moves:
                     <div ng-click="addMoveTo(pc)">(+)</div>
@@ -73,28 +70,33 @@
                          <div>Description: <input ></div>
                     </div>
                 </div>
+                <!--Inventory-->
                 <div class="col-md-6">
                     Inventory: (load: {{totalWeight(pc.inventory)}} of {{getMaxLoad(pc)}})
                     <span ng-click="addItemTo(pc)">(+)</span>
-                    <table>
-                        <thead>
-                        <td></td>
-                        <td>Name</td>
-                        <td>Uses</td>
-                        <td>Weight</td>
-                        <td>Value</td>
-                        </thead>
-                        <tr ng-repeat="item in pc.inventory" class="table-row">
-                            <td> <span ng-click="removeItem($index,pc)">(-)</span></td>
-                            <td ng-editable="item.name" type="text" class="cell name"></td>
-                            <td ng-editable="item.quantity" type="number" class="cell"></td>
-                            <td ng-editable="item.weight" type="number" class="cell"></td>
-                            <td ng-editable="item.price" type="number" class="cell"></td>
-                        </tr>
-                    </table>
+                    <!--<table>-->
+                        <!--<thead>-->
+                        <!--<td></td>-->
+                        <!--<td>Name</td>-->
+                        <!--<td>Uses</td>-->
+                        <!--<td>Weight</td>-->
+                        <!--<td>Value</td>-->
+                        <!--</thead>-->
+                        <!--<tr ng-repeat="item in pc.inventory" class="table-row">-->
+                            <!--<td> <span ng-click="removeItem($index,pc)">(-)</span></td>-->
+                            <!--<td ng-editable="item.name" type="text" class="cell name"></td>-->
+                            <!--<td ng-editable="item.quantity" type="number" class="cell"></td>-->
+                            <!--<td ng-editable="item.weight" type="number" class="cell"></td>-->
+                            <!--<td ng-editable="item.price" type="number" class="cell"></td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+
+                    <!--<div ng-grid="getInventoryGridOption(pc.inventory)"></div>-->
+                    <div ng-grid="getInventoryGridOption(pc.inventory, $index)" class="gridStyle"></div>
                 </div>
             </div>
-               <div class="seperator"></div>
+
+            <div ng-if="!$last" class="separator"></div>
         </div>
     </tab>
     <tab heading="NPCs" class="tab-pane">

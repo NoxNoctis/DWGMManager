@@ -8,7 +8,8 @@
         "angular-bootstrap":"latest",
         "angular-ui-router":"latest",
         "lodash":"2.4.1",
-        "isteven-angular-multiselect": "v2.0.1"
+        "isteven-angular-multiselect": "v2.0.1",
+        "ng-grid":"latest"
     },
     "private": true
 }

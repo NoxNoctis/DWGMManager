@@ -9,7 +9,7 @@ app.directive('ngEditable', function () {
             type:'@'
         },
         template:
-            '<span ng-show="!edit" ng-dblclick="edit=true" ng-init="edit=false">{{ngEditable}}</span>'+
+            '<span ng-show="!edit" ng-dblclick="edit=true" ng-init="edit=false" ng-class="editable-span">{{ngEditable}}</span>'+
             '<input type="{{type}}" ng-blur="edit=false" ng-show="edit" ng-model=ngEditable>',
          link: function (scope, elem, attrs) {
         }

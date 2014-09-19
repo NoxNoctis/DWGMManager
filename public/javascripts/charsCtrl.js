@@ -53,6 +53,9 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
     $scope.totalWeight = function (items) {
         var res = 0;
         angular.forEach(items, function (item) {
+            if(angular.isString(item.weight)){
+                item.weight = parseInt(item.weight);
+            }
             res += item.weight;
         });
         return res;
@@ -82,6 +85,41 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
     $scope.removeItem = function (itemIndex, pc) {
         pc.inventory.splice(itemIndex, 1);
     };
+
+    $scope.getInventoryGridOption = function (inventory, $index) {
+        var option = {
+            data: getInventoryString($index),
+            enableCellSelection: true,
+            enableRowSelection: false,
+            enableCellEditOnFocus: true,
+            columnDefs: [
+                {field: 'name', displayName: 'name', enableCellEdit: true},
+                {field: 'quantity', displayName: 'quantity', enableCellEdit: true},
+                {field: 'weight', displayName: 'weight', enableCellEdit: true},
+                {field: 'price', displayName: 'price', enableCellEdit: true}
+            ]
+        };
+        return option;
+    };
+
+    function getInventoryString(index){
+        return 'PCs['+index+'].inventory';
+    }
+
+
+    $scope.gridOption ={
+            data: 'PCs[0].inventory',
+            enableCellSelection: true,
+            enableRowSelection: false,
+            enableCellEditOnFocus: true,
+            columnDefs: [
+                {field: 'name', displayName: 'name', enableCellEdit: true},
+                {field: 'quantity', displayName: 'quantity', enableCellEdit: true},
+                {field: 'weight', displayName: 'weight', enableCellEdit: true},
+                {field: 'price', displayName: 'price', enableCellEdit: true}
+            ]
+        };
+
 
 
 });

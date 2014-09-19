@@ -56,18 +56,17 @@
                 <div class="col-md-6">
                     Moves:
                     <span ng-click="moveSelect = !moveSelect" ng-init="moveSelect=false">(+)</span>
-                    <!--<select ng-show="moveSelect">-->
-                        <!--<option ng-repeat="move in getAvailableMoves(pc)" ng-click="$parent.moveSelect=false">-->
-                            <!--{{move.name}}-->
-                        <!--</option>-->
-                    <!--</select>-->
+                    <select ng-show="moveSelect" ng-model="selectedMove"
+                            ng-options="move.name for move in getAvailableMoves(pc)"
+                            ng-change="addMoveTo(pc, selectedMove);moveSelect=false">
+                    </select>
                     <dl>
                         <dt ng-repeat-start="move in pc.class.moves" ng-click="$parent.showDesc=!$parent.showDesc"
                             tooltip="{{move.desc}}">
                             <span ng-click="removeMove($index,pc)">(-)</span>
                             {{move.name}}
                         </dt>
-                        <dd ng-repeat-end ng-show="showDesc" ng-init="showDesc=false">{{move.desc}}
+                        <dd ng-repeat-end ng-show="showDesc" ng-click="showDesc=false" ng-init="showDesc=false">{{move.desc}}
                         </dd>
                     </dl>
                 </div>

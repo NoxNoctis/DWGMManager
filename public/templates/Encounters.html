@@ -17,7 +17,9 @@
                         <li ng-repeat="move in monster.moves">{{move}}</li>
                     </ul>
                 </div>
-                <button ng-click="removeMonster($index)">Dead!</button>
+                <button ng-click="dealDamageTo(monster,damage,piercing,ignoreArmor)">Hit</button>
+                <input type="numer" ng-model="damage" class="num">+<input type="numer" ng-model="piercing" class="num"> piercing<input type="checkbox" ng-model="ignoreArmor">Ignore armor
+                <div><button ng-click="removeMonster($index)">Dead!</button></div>
             </div>
         </div>
         <div class="container">

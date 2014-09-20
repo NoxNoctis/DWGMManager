@@ -491,6 +491,21 @@ app.controller('encounterCtrl', function ($scope) {
     $scope.removeMonster = function ($index) {
         $scope.fightingMonsters.splice($index, 1);
     };
+    $scope.dealDamageTo = function (monster, damage, piercing, ignoreArmor) {
+        if (!ignoreArmor) {
+            piercing = angular.isDefined(piercing) ? piercing : 0;
+            var armor = monster.armor;
+            var piercingBonus = Math.min(piercing, armor, damage);
+            if (damage - armor > 0) {
+                damage = damage - armor;
+            } else {
+                damage = 0;
+            }
+            damage += piercingBonus;
+        }
+
+        monster.HP -= damage;
+    };
 
     $scope.removeMove = function (monster, $index) {
         monster.moves.splice($index, 1);

@@ -3,13 +3,17 @@
     "version": "0.0.1",
     "dependencies": {
         "bootstrap":"latest",
+        "angular-ui":"latest",
+        "angular-mousewheel":"latest",
+        "kineticjs":"latest",
         "jquery": "latest",
         "angular": "latest",
         "angular-bootstrap":"latest",
         "angular-ui-router":"latest",
         "lodash":"2.4.1",
         "isteven-angular-multiselect": "v2.0.1",
-        "ng-grid":"latest"
+        "ng-grid":"latest",
+        "ng-file-upload":"latest"
     },
     "private": true
 }

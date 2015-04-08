@@ -5,6 +5,7 @@
   "scripts": {
     "start": "HOME=$HOME/app-root/runtime/repo bower install ./public; node ./server/app.js; "
   },
+  "main":"./server/app.js",
   "dependencies": {
     "express": "~4.2.0",
     "static-favicon": "~1.0.0",

@@ -50,6 +50,7 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         }
         return (lvl + 7 - xp);
     };
+
     $scope.totalWeight = function (items) {
         var res = 0;
         angular.forEach(items, function (item) {

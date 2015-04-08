@@ -19,4 +19,10 @@
                 <!--<a ui-sref="Encounters">Encounters</a>-->
             <!--</li>-->
         <!--</ul>-->
+<div ng-controller="saveCtrl">
+    <button ng-click="download()" class="pull-right">save</button>
+    <!--<input type="file" class="pull-right" />-->
+    <button ng-file-select="onFileSelect($files)" data-multiple="true" title="select file" onclick="this.value = null"
+         class="upload-button pull-right">load</button>
+    </div>
 </div>

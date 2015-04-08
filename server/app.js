@@ -5,7 +5,8 @@ var log = require('util').log;
 
 var app = express();
 
-app.set('port', 3000);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT ||3000);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 app.use(mainRouter);
 

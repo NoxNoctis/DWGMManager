@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "HOME=$HOME/app-root/runtime/repo bower install ./public; node ./server/app.js;"
+    "start": "HOME=$HOME/app-root/runtime/repo bower install ./public; node ./server/app.js; "
   },
   "dependencies": {
     "express": "~4.2.0",

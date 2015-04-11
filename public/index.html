@@ -12,29 +12,31 @@
 </head>
 
 <body ng-controller="mainCtrl">
-<ng-include src="'templates/header.html'"></ng-include>
-<tabset class="tabsetClass">
-    <tab heading="Maps" class="tabClass">
-        <ng-include src="'templates/maps.html'" ng-controller="mapCtrl"></ng-include>
-    </tab>
-    <tab heading="Chars" class="tabClass">
-        <ng-include src="'templates/Characters.html'" ng-controller="charsCtrl"></ng-include>
-    </tab>
-    <tab heading="Moves" class="tabClass">
-        <ng-include src="'templates/Moves.html'"></ng-include>
-    </tab>
-    <tab heading="Plots" class="tabClass">
-        <ng-include src="'templates/Plots.html'"></ng-include>
-    </tab>
-    <tab heading="Encounters" class="tabClass">
-        <ng-include src="'templates/Encounters.html'" ng-controller="encounterCtrl"></ng-include>
-    </tab>
-</tabset>
-<!--<div ui-view class="view"></div>-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="#">
+                <img alt="Brand" src="images/DungeonWorldLogo.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a ng-link="maps">Maps</a></li>
+                <li><a ng-link="characters">Characters</a></li>
+                <li><a ng-link="encounters">Encounters</a></li>
+                <li><a ng-link="moves">Moves</a></li>
+                <li><a ng-link="plots">Plots</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ng-viewport></div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="javascripts/new_router/dist/router.es5.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>

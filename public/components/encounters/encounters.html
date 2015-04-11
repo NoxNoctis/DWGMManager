@@ -4,7 +4,7 @@
             <div class="h1">Fight!</div>
             <div ng-repeat="monster in fightingMonsters track by $index" class="monster-descriptor col-md-4">
                 <div><input type="text" ng-model="monster.name"></div>
-                <div>HP: <input type="number" ng-model="monster.HP"  class="num"></div>
+                <div>HP: <input type="number" ng-model="monster.HP" class="num"></div>
                 <div>armor: {{monster.armor}}</div>
                 <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
                 </div>
@@ -18,30 +18,39 @@
                     </ul>
                 </div>
                 <button ng-click="dealDamageTo(monster,damage,piercing,ignoreArmor)">Hit</button>
-                <input type="numer" ng-model="damage" class="num">+<input type="numer" ng-model="piercing" class="num"> piercing<input type="checkbox" ng-model="ignoreArmor">Ignore armor
-                <div><button ng-click="removeMonster($index)">Dead!</button></div>
+                <input type="numer" ng-model="damage" class="num">+<input type="numer" ng-model="piercing" class="num">
+                piercing<input type="checkbox" ng-model="ignoreArmor">Ignore armor
+                <div>
+                    <button ng-click="removeMonster($index)">Dead!</button>
+                </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div ng-repeat="monster in monsters" class="monster-descriptor col-md-4 container">
                     <ul class="pull-right list-unstyled">
-                        <li><div class="monster-descriptor-btn edit-btn" ng-click="onMonsterEdit($index)"></div></li>
-                        <li><div class="monster-descriptor-btn pic-btn"></div></li>
+                        <li>
+                            <div class="monster-descriptor-btn edit-btn" ng-click="onMonsterEdit($index)"></div>
+                        </li>
+                        <li>
+                            <div class="monster-descriptor-btn pic-btn"></div>
+                        </li>
                     </ul>
                     <h2>{{monster.name}}</h2>
+
                     <div class="row">
                         <div class="col-md-3"><strong>HP </strong>{{monster.HP}}</div>
                         <div class="col-md-3"><strong>armor: </strong>{{monster.armor}}</div>
                     </div>
                     <div class="row">
-                    <div class="col-md-10">{{monster.attack.action}} ({{monster.attack.roll}} dmg <span
-                            ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
-                       </div>
+                        <div class="col-md-10">{{monster.attack.action}} ({{monster.attack.roll}} dmg <span
+                                ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
+                        </div>
                     </div>
                     <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}} </span></div>
                     <div><span ng-repeat="tag in monster.tags">{{tag.name}} </span></div>
-                    <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}</div>
+                    <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}
+                    </div>
                     <div><strong>instinct: </strong>{{monster.instinct}}</div>
                     <div>
                         <ul>

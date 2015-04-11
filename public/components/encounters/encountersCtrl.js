@@ -2,10 +2,10 @@
  * Created by Alex on 20/08/2014.
  */
 
-app.controller('encounterCtrl', function ($scope) {
+app.controller('encountersCtrl', function () {
 
 
-    $scope.regions = [
+    this.regions = [
         {
             name: 'region 1',
             monsters: [
@@ -394,11 +394,11 @@ app.controller('encounterCtrl', function ($scope) {
         }
 
     ];
-    $scope.selectedMonster = {};
-    $scope.editMode = false;
-    $scope.fightingMonsters = [];
+    this.selectedMonster = {};
+    this.editMode = false;
+    this.fightingMonsters = [];
 
-    $scope.monsterTags = [
+    this.monsterTags = [
         {
             name: "Horde"
         },
@@ -416,7 +416,7 @@ app.controller('encounterCtrl', function ($scope) {
             name: "Large"
         }
     ];
-    $scope.monsterAttackTags = [
+    this.monsterAttackTags = [
         {
             name: "Hand"
         },
@@ -436,26 +436,26 @@ app.controller('encounterCtrl', function ($scope) {
     ];
 
 
-    $scope.monsters = $scope.regions[0].monsters;
-    $scope.traps = $scope.regions[0].traps;
-    $scope.treasures = $scope.regions[0].treasures;
+    this.monsters = this.regions[0].monsters;
+    this.traps = this.regions[0].traps;
+    this.treasures = this.regions[0].treasures;
 
-    $scope.onRegionClick = function ($index) {
-        $scope.monsters = $scope.regions[$index].monsters;
-        $scope.traps = $scope.regions[$index].traps;
-        $scope.treasures = $scope.regions[$index].treasures;
+    this.onRegionClick = function ($index) {
+        this.monsters = this.regions[$index].monsters;
+        this.traps = this.regions[$index].traps;
+        this.treasures = this.regions[$index].treasures;
     };
 
-    $scope.onMonsterEdit = function ($index) {
-        $scope.editMode = true;
-        $scope.selectedMonster = $scope.monsters[$index];
-        angular.forEach($scope.monsterTags, function (tag) {
-            tag.selected = angular.isDefined(_.find($scope.selectedMonster.tags, function (mTag) {
+    this.onMonsterEdit = function ($index) {
+        this.editMode = true;
+        this.selectedMonster = this.monsters[$index];
+        angular.forEach(this.monsterTags, function (tag) {
+            tag.selected = angular.isDefined(_.find(this.selectedMonster.tags, function (mTag) {
                 return tag.name == mTag.name
             }));
         });
-        angular.forEach($scope.monsterAttackTags, function (tag) {
-            tag.selected = angular.isDefined(_.find($scope.selectedMonster.attack.extra, function (mTag) {
+        angular.forEach(this.monsterAttackTags, function (tag) {
+            tag.selected = angular.isDefined(_.find(this.selectedMonster.attack.extra, function (mTag) {
                 return tag.name == mTag.name
             }));
         });
@@ -465,33 +465,33 @@ app.controller('encounterCtrl', function ($scope) {
         return {};
     };
 
-    $scope.onMonsterGenerate = function (generationParams) {
-        $scope.editMode = true;
-        $scope.selectedMonster = generateMonster(generationParams);
-        $scope.selectedMonster.generated = true;
-        angular.forEach($scope.monsterTags, function (tag) {
+    this.onMonsterGenerate = function (generationParams) {
+        this.editMode = true;
+        this.selectedMonster = generateMonster(generationParams);
+        this.selectedMonster.generated = true;
+        angular.forEach(this.monsterTags, function (tag) {
             tag.selected = false;
         });
-        angular.forEach($scope.monsterAttackTags, function (tag) {
+        angular.forEach(this.monsterAttackTags, function (tag) {
             tag.selected = false;
         });
     };
 
-    $scope.editableExit = function () {
-        if ($scope.selectedMonster.generated) {
-            delete $scope.selectedMonster.generated;
-            $scope.monsters.push($scope.selectedMonster);
+    this.editableExit = function () {
+        if (this.selectedMonster.generated) {
+            delete this.selectedMonster.generated;
+            this.monsters.push(this.selectedMonster);
         }
-        $scope.editMode = false;
+        this.editMode = false;
     };
 
-    $scope.fightMonster = function ($index) {
-        $scope.fightingMonsters.push(jQuery.extend({id: $scope.fightingMonsters.length}, $scope.monsters[$index]));
+    this.fightMonster = function ($index) {
+        this.fightingMonsters.push(jQuery.extend({id: this.fightingMonsters.length}, this.monsters[$index]));
     };
-    $scope.removeMonster = function ($index) {
-        $scope.fightingMonsters.splice($index, 1);
+    this.removeMonster = function ($index) {
+        this.fightingMonsters.splice($index, 1);
     };
-    $scope.dealDamageTo = function (monster, damage, piercing, ignoreArmor) {
+    this.dealDamageTo = function (monster, damage, piercing, ignoreArmor) {
         if (!ignoreArmor) {
             piercing = angular.isDefined(piercing) ? piercing : 0;
             var armor = monster.armor;
@@ -507,11 +507,11 @@ app.controller('encounterCtrl', function ($scope) {
         monster.HP -= damage;
     };
 
-    $scope.removeMove = function (monster, $index) {
+    this.removeMove = function (monster, $index) {
         monster.moves.splice($index, 1);
     };
 
-    $scope.addMove = function (monster) {
+    this.addMove = function (monster) {
         if (!angular.isDefined(monster.moves)) {
             monster.moves = [];
         }

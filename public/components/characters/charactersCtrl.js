@@ -2,26 +2,26 @@
  * Created by Alex on 22/08/2014.
  */
 
-app.controller('charsCtrl', function ($scope, $dataCollector) {
+app.controller('charactersCtrl', function ($dataCollector) {
 
-    $scope.PCs = $dataCollector.getPCs();
-    $scope.debilities = $dataCollector.getDebilities();
+    this.PCs = $dataCollector.getPCs();
+    this.debilities = $dataCollector.getDebilities();
 
-    $scope.getMaxHp = function (char) {
+    this.getMaxHp = function (char) {
         var CON = _.find(char.stats, function (stat) {
             return stat.name == 'CON';
         });
         return char.class.baseHP + CON.value;
     };
 
-    $scope.getMaxLoad = function (char) {
+    this.getMaxLoad = function (char) {
         var STR = _.find(char.stats, function (stat) {
             return stat.name == 'STR';
         });
-        return char.class.baseMaxLoad + $scope.getModifier(STR);
+        return char.class.baseMaxLoad + this.getModifier(STR);
     };
 
-    $scope.getModifier = function (stat, debility) {
+    this.getModifier = function (stat, debility) {
         var mod = debility ? -1 : 0;
         if (stat < 9)
             return -1 + mod;
@@ -34,7 +34,7 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         else
             return 3 + mod;
     };
-    $scope.getLevelByXp = function (xp) {
+    this.getLevelByXp = function (xp) {
         var lvl = 1;
         while (xp >= (lvl + 7)) {
             xp -= (lvl + 7);
@@ -42,7 +42,7 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         }
         return lvl;
     };
-    $scope.getRemainderXp = function (xp) {
+    this.getRemainderXp = function (xp) {
         var lvl = 1;
         while (xp >= (lvl + 7)) {
             xp -= (lvl + 7);
@@ -51,7 +51,7 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         return (lvl + 7 - xp);
     };
 
-    $scope.totalWeight = function (items) {
+    this.totalWeight = function (items) {
         var res = 0;
         angular.forEach(items, function (item) {
             if(angular.isString(item.weight)){
@@ -62,22 +62,22 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
         return res;
     };
 
-    $scope.addMoveTo = function (pc, move) {
+    this.addMoveTo = function (pc, move) {
         pc.class.moves.push(move);
     };
 
-    $scope.getAvailableMoves = function(pc){
+    this.getAvailableMoves = function(pc){
         var advancedMoves = $dataCollector.getClass(pc.class.name).moves.advanced;
         var availableMoves = _.filter(advancedMoves, function (move) {
             return !_.contains(pc.class.moves, move)
         });
         return availableMoves;
     };
-    $scope.removeMove = function (moveIndex, pc) {
+    this.removeMove = function (moveIndex, pc) {
         pc.class.moves.splice(moveIndex, 1);
     };
 
-    $scope.addItemTo = function (pc) {
+    this.addItemTo = function (pc) {
         pc.inventory.push(
             {
                 name: '',
@@ -86,11 +86,11 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
             });
     };
 
-    $scope.removeItem = function (itemIndex, pc) {
+    this.removeItem = function (itemIndex, pc) {
         pc.inventory.splice(itemIndex, 1);
     };
 
-    $scope.getInventoryGridOption = function (inventory, $index) {
+    this.getInventoryGridOption = function (inventory, $index) {
         var option = {
             data: getInventoryString($index),
             enableCellSelection: true,
@@ -111,7 +111,7 @@ app.controller('charsCtrl', function ($scope, $dataCollector) {
     }
 
 
-    $scope.gridOption ={
+    this.gridOption ={
             data: 'PCs[0].inventory',
             enableCellSelection: true,
             enableRowSelection: false,

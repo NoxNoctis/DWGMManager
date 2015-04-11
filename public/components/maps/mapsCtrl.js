@@ -5,8 +5,8 @@
  * Created by Alex on 14/08/2014.
  */
 
-app.controller('mapCtrl', function ($scope) {
+app.controller('mapsCtrl', function () {
 
-    $scope.currentMap = 'images/faerun.jpg';
+    this.currentMap = '/images/faerun.jpg';
 
 });

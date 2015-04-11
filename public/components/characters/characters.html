@@ -15,7 +15,7 @@
 
 <tabset>
     <tab heading="PCs" class="tab-pane">
-        <div ng-repeat="pc in PCs" class="container pc">
+        <div ng-repeat="pc in characters.PCs" class="container pc">
             <!--Basic Info-->
             <div class="row">
                 <div class="col-md-3">Name: <span ng-editable="pc.name" type="text"></span></div>
@@ -23,25 +23,28 @@
             </div>
             <div class="row">
                 <div class="col-md-2">Class: {{pc.class.name}}</div>
-                <div class="col-md-2">level: {{getLevelByXp(pc.xp)}}</div>
-                <div class="col-md-4">XP: <input type="number" ng-model="pc.xp" class="num"> ({{getRemainderXp(pc.xp)}} to next
+                <div class="col-md-2">level: {{characters.getLevelByXp(pc.xp)}}</div>
+                <div class="col-md-4">XP: <input type="number" ng-model="pc.xp" class="num">
+                    ({{characters.getRemainderXp(pc.xp)}} to next
                     level)
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">Damage: {{pc.class.damage}}</div>
                 <div class="col-md-2">Armor: {{pc.armor}}</div>
-                <div class="col-md-4">HP: <input type="number" ng-model="pc.hp" class="num" ng-init="pc.hp=getMaxHp(pc)"> of
-                    {{getMaxHp(pc)}}
+                <div class="col-md-4">HP: <input type="number" ng-model="pc.hp" class="num"
+                                                 ng-init="pc.hp=characters.getMaxHp(pc)"> of {{characters.getMaxHp(pc)}}
                 </div>
             </div>
             <!--Abilities-->
             <div class="row">
                 <div class="col-md-1" ng-repeat="stat in pc.stats">
-                    <div><span ng-editable="stat.value" type="number"></span> (<span ng-if="getModifier(stat.value,debility)>0">+</span>{{getModifier(stat.value,debility)}})
+                    <div><span ng-editable="stat.value" type="number"></span> (<span
+                            ng-if="getModifier(stat.value,debility)>0">+</span>{{characters.getModifier(stat.value,debility)}})
                     </div>
                     <div class="debility" ng-click="debility=!debility">
-                        <input type="checkbox" ng-click="$event.stopPropagation()" ng-model="debility" ng-init="debility=false">
+                        <input type="checkbox" ng-click="$event.stopPropagation()" ng-model="debility"
+                               ng-init="debility=false">
                         <span>{{debilities[stat.name]}}</span>
                     </div>
                     <div>{{stat.name}}</div>
@@ -66,33 +69,17 @@
                             <span ng-click="removeMove($index,pc)">(-)</span>
                             {{move.name}}
                         </dt>
-                        <dd ng-repeat-end ng-show="showDesc" ng-click="showDesc=false" ng-init="showDesc=false">{{move.desc}}
+                        <dd ng-repeat-end ng-show="showDesc" ng-click="showDesc=false" ng-init="showDesc=false">
+                            {{move.desc}}
                         </dd>
                     </dl>
                 </div>
                 <!--Inventory-->
                 <div class="col-md-6">
-                    Inventory: (load: {{totalWeight(pc.inventory)}} of {{getMaxLoad(pc)}})
-                    <span ng-click="addItemTo(pc)">(+)</span>
-                    <!--<table>-->
-                        <!--<thead>-->
-                        <!--<td></td>-->
-                        <!--<td>Name</td>-->
-                        <!--<td>Uses</td>-->
-                        <!--<td>Weight</td>-->
-                        <!--<td>Value</td>-->
-                        <!--</thead>-->
-                        <!--<tr ng-repeat="item in pc.inventory" class="table-row">-->
-                            <!--<td> <span ng-click="removeItem($index,pc)">(-)</span></td>-->
-                            <!--<td ng-editable="item.name" type="text" class="cell name"></td>-->
-                            <!--<td ng-editable="item.quantity" type="number" class="cell"></td>-->
-                            <!--<td ng-editable="item.weight" type="number" class="cell"></td>-->
-                            <!--<td ng-editable="item.price" type="number" class="cell"></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
+                    Inventory: (load: {{characters.totalWeight(pc.inventory)}} of {{characters.getMaxLoad(pc)}})
+                    <span ng-click="characters.addItemTo(pc)">(+)</span>
 
-                    <!--<div ng-grid="getInventoryGridOption(pc.inventory)"></div>-->
-                    <div ng-grid="getInventoryGridOption(pc.inventory, $index)" class="gridStyle"></div>
+                    <div ui-grid="{data: pc.inventory, columnDefs: characters.columnDefs}" class="gridStyle"></div>
                 </div>
             </div>
             <div ng-if="!$last" class="separator"></div>

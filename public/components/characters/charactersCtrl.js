@@ -90,9 +90,9 @@ app.controller('charactersCtrl', function ($dataCollector) {
         pc.inventory.splice(itemIndex, 1);
     };
 
-    this.getInventoryGridOption = function (inventory, $index) {
+    this.getInventoryGridOption = function (inventory) {
         var option = {
-            data: getInventoryString($index),
+            data: inventory,
             enableCellSelection: true,
             enableRowSelection: false,
             enableCellEditOnFocus: true,
@@ -106,24 +106,14 @@ app.controller('charactersCtrl', function ($dataCollector) {
         return option;
     };
 
+    this.columnDefs = [
+        {field: 'name', displayName: 'name', enableCellEdit: true},
+        {field: 'quantity', displayName: 'quantity', enableCellEdit: true},
+        {field: 'weight', displayName: 'weight', enableCellEdit: true},
+        {field: 'price', displayName: 'price', enableCellEdit: true}
+    ];
+
     function getInventoryString(index){
-        return 'PCs['+index+'].inventory';
+        return 'characters.PCs['+index+'].inventory';
     }
-
-
-    this.gridOption ={
-            data: 'PCs[0].inventory',
-            enableCellSelection: true,
-            enableRowSelection: false,
-            enableCellEditOnFocus: true,
-            columnDefs: [
-                {field: 'name', displayName: 'name', enableCellEdit: true},
-                {field: 'quantity', displayName: 'quantity', enableCellEdit: true},
-                {field: 'weight', displayName: 'weight', enableCellEdit: true},
-                {field: 'price', displayName: 'price', enableCellEdit: true}
-            ]
-        };
-
-
-
 });

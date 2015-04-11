@@ -7,7 +7,7 @@ var app = angular.module("dungeon-world-game-master",
         'ngNewRouter',
         'monospaced.mousewheel',
         'multi-select',
-        'ngGrid',
+        'ui.grid',
         'angularFileUpload'
     ]);
 

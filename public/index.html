@@ -5,36 +5,38 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="bower_components/isteven-angular-multiselect/angular-multi-select.css" rel="stylesheet" type="text/css">
     <link href="bower_components/angular-ui/build/angular-ui.css" rel="stylesheet" type="text/css">
-    <link href="bower_components/ng-grid/ng-grid.css" rel="stylesheet" type="text/css">
+    <link href="bower_components/angular-ui-grid/ui-grid.min.css" rel="stylesheet" type="text/css">
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="images/DungeonWorldLogo.png" />
     <title>Dungeon World GM Manager</title>
 </head>
 
 <body ng-controller="mainCtrl">
-<ng-include src="'templates/header.html'"></ng-include>
-<tabset class="tabsetClass">
-    <tab heading="Maps" class="tabClass">
-        <ng-include src="'templates/maps.html'" ng-controller="mapCtrl"></ng-include>
-    </tab>
-    <tab heading="Chars" class="tabClass">
-        <ng-include src="'templates/Characters.html'" ng-controller="charsCtrl"></ng-include>
-    </tab>
-    <tab heading="Moves" class="tabClass">
-        <ng-include src="'templates/Moves.html'"></ng-include>
-    </tab>
-    <tab heading="Plots" class="tabClass">
-        <ng-include src="'templates/Plots.html'"></ng-include>
-    </tab>
-    <tab heading="Encounters" class="tabClass">
-        <ng-include src="'templates/Encounters.html'" ng-controller="encounterCtrl"></ng-include>
-    </tab>
-</tabset>
-<!--<div ui-view class="view"></div>-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="#">
+                <img alt="Brand" src="images/DungeonWorldLogo.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a ng-link="maps">Maps</a></li>
+                <li><a ng-link="characters">Characters</a></li>
+                <li><a ng-link="encounters">Encounters</a></li>
+                <li><a ng-link="moves">Moves</a></li>
+                <li><a ng-link="plots">Plots</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ng-viewport></div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="javascripts/new_router/dist/router.es5.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -44,15 +46,15 @@
 <script src="bower_components/lodash/dist/lodash.js"></script>
 <script src="bower_components/isteven-angular-multiselect/angular-multi-select.js"></script>
 <script src="bower_components/angular-ui/build/angular-ui.js"></script>
-<script src="bower_components/ng-grid/build/ng-grid.js"></script>
+<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
 <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
 <script src="javascripts/app.js"></script>
 <script src="javascripts/services/dataCollector.js"></script>
-<script src="javascripts/mapCtrl.js"></script>
+<script src="components/maps/mapsCtrl.js"></script>
 <script src="javascripts/directives/map.js"></script>
 <script src="javascripts/directives/editableCell.js"></script>
-<script src="javascripts/encounterCtrl.js"></script>
-<script src="javascripts/charsCtrl.js"></script>
+<script src="components/encounters/encountersCtrl.js"></script>
+<script src="components/characters/charactersCtrl.js"></script>
 <script src="javascripts/saveCtrl.js"></script>
 
 </body>

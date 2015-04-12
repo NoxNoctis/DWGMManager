@@ -4,39 +4,38 @@
 
 var app = angular.module("dungeon-world-game-master",
     ['ui.bootstrap',
-        'ui.router',
+        'ngNewRouter',
         'monospaced.mousewheel',
         'multi-select',
-        'ngGrid',
+        'ui.grid',
         'angularFileUpload'
     ]);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-        .state('Maps', {
-            url: '/Maps',
-            templateUrl: 'templates/Maps.html',
-            controller: 'mapCtrl'
-        })
-        .state('Chars', {
-            url: '/Chars',
-            templateUrl: 'templates/Characters.html',
-            controller:'charsCtrl'
-        })
-        .state('Moves', {
-            url: '/Moves',
-            templateUrl: 'templates/Moves.html'
-        })
-        .state('Plots', {
-            url: "/Plots",
-            templateUrl: 'templates/Plots.html'
-        })
-        .state('Encounters', {
-            url: "/Encounters",
-            templateUrl: 'templates/Encounters.html',
-            controller: 'encounterCtrl'
-        });
-});
+app.config(['$componentLoaderProvider', function ($componentLoaderProvider) {
+    $componentLoaderProvider.setCtrlNameMapping(function (name) {
+        return name[0] + name.substr(1) + 'Ctrl';
+    });
+}]);
+
+app.run(['$router', function ($router) {
+    $router
+     .config([{
+            path: '/maps',
+            component:'maps'
+        },{
+            path: '/characters',
+            component:'characters'
+        },{
+            path: '/moves',
+            component:'moves'
+        },{
+            path: '/plots',
+            component:'plots'
+        },{
+            path: '/encounters',
+            component:'encounters'
+        }]);
+}]);
 app.controller('mainCtrl', function ($scope) {
 
 });

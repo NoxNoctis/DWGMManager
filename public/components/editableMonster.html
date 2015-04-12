@@ -1,0 +1,51 @@
+<div>
+    <label>Name: <input type="text" ng-model="encounters.selectedMonster.name"></label>
+</div>
+<div><label>HP: <input type="number" ng-model="encounters.selectedMonster.HP" class="num"></label>
+    <label> Armor: <input type="number" ng-model="encounters.selectedMonster.armor"  class="num"></label>
+</div>
+<div>Attack:</div>
+<div>
+    <input type="text" ng-model="encounters.selectedMonster.attack.action">
+    (<input type="text" ng-model="encounters.selectedMonster.attack.roll"> dmg +
+    <input type="number" ng-model="encounters.selectedMonster.attack.piercing"  class="num"> piercing)
+</div>
+<div>
+    <label>Attack tags:
+        <multi-select
+                input-model="monsterAttackTags"
+                button-label="name"
+                item-label="name"
+                tick-property="selected"
+                output-model="encounters.selectedMonster.attack.extra"
+                helper-elements="filter"
+                default-label="Attack Tags">
+        </multi-select>
+    </label>
+
+</div>
+<div>
+    <label>Tags:
+        <multi-select
+                input-model="monsterTags"
+                button-label="name"
+                item-label="name"
+                tick-property="selected"
+                output-model="encounters.selectedMonster.tags"
+                helper-elements="filter"
+                default-label="Monster Tags">
+        </multi-select>
+    </label>
+</div>
+<div><label>Special Quality: <input type="text" ng-model="encounters.selectedMonster.specialQuality"></label></div>
+<div><label>Instinct: <input type="text" ng-model="encounters.selectedMonster.instinct" class="desc"></label></div>
+<div>
+    <div>Moves:<span ng-click="encounters.addMove(encounters.selectedMonster)">(+)</span></div>
+    <div ng-repeat="move in encounters.selectedMonster.moves track by $index" >
+        <input type="text" ng-model="encounters.selectedMonster.moves[$index]" class="desc"><span ng-click="encounters.removeMove(encounters.selectedMonster, $index)">(-)</span>
+    </div>
+</div>
+<button ng-click="encounters.editableExit()">OK</button>
+<!--<button ng-if="encounters.selectedMonster.generated" ng-click="reGenerate()">Generate</button>-->
+
+

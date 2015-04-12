@@ -17,12 +17,12 @@ body {
 
 }
 
-.header > .logo {
-    float: left;
-    display: inline;
+
+.logo {
+    padding-top: 0;
 }
 
-.header > .logo > img {
+.logo > img{
     height: 50px;
 }
 

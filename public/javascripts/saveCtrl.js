@@ -3,7 +3,7 @@
  */
 app.controller('saveCtrl', function ($scope, $dataCollector, $http) {
 
-    $scope.download = function () {
+    this.download = function () {
 
         $http.put('/save', $dataCollector.getPCs());
         var pom = document.createElement('a');

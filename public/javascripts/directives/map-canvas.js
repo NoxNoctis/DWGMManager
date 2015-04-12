@@ -9,15 +9,13 @@ app.directive('ngMap', function () {
         scope: {
             src: '@'
         },
-        template:
-         '<canvas msd-wheel="mouseWheel($deltaY)"  ng-mousemove="mouseMove($event)" ng-mousedown="mouseDown($event)" ng-mouseup="dragging=false" class="draggable-map">'
+        template: '<canvas msd-wheel="mouseWheel($deltaY)"  ng-mousemove="mouseMove($event)" ng-mousedown="mouseDown($event)" ng-mouseup="dragging=false" class="draggable-map">'
 //            '<img src={{src}} alt="no map found" width="{{width}}" class="draggable-map"></img>',
-    +'</canvas>',
+        + '</canvas>',
 
         link: function (scope, elem, attrs) {
 
-
-            var mapWidth,mapHeigth,mapX=0, mapY=0;
+            var mapWidth, mapHeigth, mapX = 0, mapY = 0;
             var startX, startY;
 
             var canvasOffset = elem.offset();
@@ -28,15 +26,15 @@ app.directive('ngMap', function () {
             var ctx = canvas.getContext("2d");
             var map = new Image();
             map.src = scope.src;
-            map.onload = function(){
-                mapWidth =  map.width/64;
-                mapHeigth = map.height/64;
+            map.onload = function () {
+                mapWidth = map.width / 64;
+                mapHeigth = map.height / 64;
                 draw();
             };
 
             console.log("entered Map Link");
 
-            function draw(){
+            function draw() {
                 // clear the canvas
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -53,25 +51,26 @@ app.directive('ngMap', function () {
                 if (scope.rawWidth < 100) {
                     scope.rawWidth = 100;
                 }
+
                 scope.width = scope.rawWidth + "%";
                 event.preventDefault();
             };
 
             scope.$watch('rawWidth', function (newVal, oldVal) {
                 console.log(newVal);
-                mapWidth = mapWidth * newVal/oldVal;
-                mapHeigth = mapHeigth * newVal/oldVal;
+                mapWidth = mapWidth * newVal / oldVal;
+                mapHeigth = mapHeigth * newVal / oldVal;
                 draw();
             });
 
-            scope.mouseDown = function($event){
+            scope.mouseDown = function ($event) {
                 scope.dragging = true;
                 startX = parseInt($event.clientX - offsetX);
                 startY = parseInt($event.clientY - offsetY)
             };
 
-            scope.mouseMove = function($event){
-                if(scope.dragging) {
+            scope.mouseMove = function ($event) {
+                if (scope.dragging) {
                     var mouseX = parseInt($event.clientX - offsetX);
                     var mouseY = parseInt($event.clientY - offsetY);
                     var dx = mouseX - startX;
@@ -85,9 +84,6 @@ app.directive('ngMap', function () {
                     draw();
                 }
             }
-
-
         }
-
     }
 });

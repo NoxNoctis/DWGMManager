@@ -3,7 +3,7 @@ var log = require('util').log;
 
 var conn;
 
-mongo.connect("mongodb://localhost:27017/DWGM", function(err, db) {
+mongo.connect("mongodb://dwgmadmin:qwerqwer@ds045679.mongolab.com:45679/dwgm", function(err, db) {
     if(!err) {
         log("We are connected to DB");
         conn = db;

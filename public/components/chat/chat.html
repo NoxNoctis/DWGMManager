@@ -1,0 +1,12 @@
+<div>
+    <ul ng-repeat="message in chat.messages">
+        <li>
+            <div>
+                <h4>{{message.user.name}}</h4>
+                <h5>{{message.text}}</h5>
+            </div>
+        </li>
+    </ul>
+
+    <input class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}" />
+</div>

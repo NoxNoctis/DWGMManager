@@ -5,9 +5,11 @@
 var app = angular.module("dungeon-world-game-master",
     ['ui.bootstrap',
         'ngNewRouter',
+        'btford.socket-io',
         'monospaced.mousewheel',
         'multi-select',
         'ui.grid',
+        'ui.directives',
         'angularFileUpload'
     ]);
 
@@ -34,6 +36,9 @@ app.run(['$router', function ($router) {
         },{
             path: '/encounters',
             component:'encounters'
+        },{
+            path: '/chat',
+            component:'chat'
         }]);
 }]);
 app.controller('mainCtrl', function ($scope) {

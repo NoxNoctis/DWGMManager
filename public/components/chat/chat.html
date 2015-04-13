@@ -1,12 +1,26 @@
-<div>
-    <ul ng-repeat="message in chat.messages">
-        <li>
-            <div>
-                <h4>{{message.user.name}}</h4>
-                <h5>{{message.text}}</h5>
-            </div>
-        </li>
-    </ul>
+<div id="container" class="center-block row panel panel-default">
 
-    <input class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}" />
+    <div class="panel-body">
+        <div class="panel panel-default col-md-8">
+            <div class="panel-body">
+
+            </div>
+        </div>
+
+        <div id="chat" class="panel panel-default col-md-4">
+            <div class="panel-body">
+                <ul ng-repeat="message in chat.messages">
+                    <li>
+                        <div>
+                            <h4>{{message.user.name}}</h4>
+                            <h5 class="message-content">{{message.text}}</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <textarea class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}"
+                  ui-keypress="{'enter-lshift':'chat.newLine($event)'}"></textarea>
+    </div>
 </div>

@@ -1,0 +1,16 @@
+.message-content{
+    white-space: pre-wrap;
+}
+
+#container{
+    width: 80%;
+    height: 100%;
+}
+
+#container div{
+    height: 95%;
+}
+
+#chat{
+}
+

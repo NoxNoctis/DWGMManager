@@ -6,10 +6,13 @@ app.controller('chatCtrl', function (socketFactory) {
 
     this.send = function (event) {
         var message = event.currentTarget.value;
+        event.currentTarget.value = "";
 
         this.addNewMessage(this.currentUser, message);
 
         this.socket.emit("newMessage", message);
+
+        event.preventDefault();
     };
 
     this.socket.on("newMessage", function (message) {

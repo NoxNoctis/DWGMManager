@@ -1,4 +1,4 @@
-app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser) {
+app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser, commandRouter) {
 
     this.socket = socketFactory();
     this.messages = chatFactory.getMessages();
@@ -9,7 +9,7 @@ app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser) {
         var message = event.currentTarget.value;
         event.currentTarget.value = "";
 
-        chatFactory.addMessage(currentUser, message);
+        chatFactory.addMessage(currentUser, commandRouter.send(message));
 
         this.socket.emit("newMessage", message);
 

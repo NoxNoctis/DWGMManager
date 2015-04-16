@@ -1,3 +1,3 @@
 app.factory('currentUser', function(){
-    return {name: "david"};
+    return {id: 1, name: "david"};
 });

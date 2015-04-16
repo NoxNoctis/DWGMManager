@@ -17,7 +17,7 @@ app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser) {
     };
 
     this.socket.on("newMessage", function (message) {
-        chatFactory.addMessage({name: "david"}, message);
+        chatFactory.addMessage({id: 1, name: "david"}, message);
     }.bind(this));
 
     this.socket.on("drawingChange", function (message) {

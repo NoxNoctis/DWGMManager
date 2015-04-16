@@ -11,8 +11,8 @@
 
         <div id="chat" class="panel panel-default col-md-4" scroll-glue>
             <div class="panel-body">
-                <ul ng-repeat="message in chat.messages">
-                    <li>
+                <ul>
+                    <li ng-repeat="message in chat.messages" ng-class="message.class">
                         <div>
                             <h4>{{message.user.name}}</h4>
                             <h5 class="message-content">{{message.text}}</h5>

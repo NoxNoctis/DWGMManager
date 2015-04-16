@@ -12,14 +12,22 @@ app.factory('chatFactory', function () {
             if(message.length != 0){
                 var last = this.messages[this.messages.length - 1];
                 if(isLastUser(last, user)){
-                    user = "";
+                    appendTo(last, message);
                 }else{
                     switchCurrentClass();
-                }
                     this.messages.push({user: user, text: message, class:currentClass});
+                }
             }
         }
     };
+
+    function isLastUser(last, newUser){
+        return last && (last.user.id === newUser.id)
+    }
+
+    function appendTo(last, message){
+        return last.text += '\n' + message;
+    }
 
     function switchCurrentClass () {
         if(currentClass == classes.even){
@@ -27,9 +35,5 @@ app.factory('chatFactory', function () {
         }else{
             currentClass = classes.even;
         }
-    }
-
-    function isLastUser(lastUser, newUser){
-        return lastUser && (lastUser.user === newUser || lastUser.user === "")
     }
 });

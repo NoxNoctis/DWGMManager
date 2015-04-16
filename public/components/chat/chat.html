@@ -12,7 +12,7 @@
         <div id="chat" class="panel panel-default col-md-4" scroll-glue>
             <div class="panel-body">
                 <ul>
-                    <li ng-repeat="message in chat.messages" ng-class="message.class">
+                    <li ng-repeat="message in chat.messages" ng-class-even="'even-message'" ng-class-odd="'odd-message'">
                         <div>
                             <h4>{{message.user.name}}</h4>
                             <h5 class="message-content">{{message.text}}</h5>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <textarea class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}" title="sfd"></textarea>
+        <textarea class="form-control" ui-keypress="{enter:'chat.send($event)'}" title="sfd"></textarea>
     </div>
 </div>
 

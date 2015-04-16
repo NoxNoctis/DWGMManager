@@ -1,7 +1,7 @@
 app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser) {
 
     this.socket = socketFactory();
-    this.messages = chatFactory.messages;
+    this.messages = chatFactory.getMessages();
     this.loadingSnapShot = false;
     this.stopRendering = false;
 

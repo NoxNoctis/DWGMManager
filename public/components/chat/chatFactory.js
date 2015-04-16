@@ -1,39 +1,41 @@
 app.factory('chatFactory', function () {
-    var classes = {even: 'even-message', odd:'odd-message'};
-    var currentClass = 'even-message';
+    var messages = [];
 
     return {
-        messages: [],
-
         getMessages: function () {
             return messages;
         },
+
         addMessage: function (user, message) {
-            if(message.length != 0){
-                var last = this.messages[this.messages.length - 1];
-                if(isLastUser(last, user)){
-                    appendTo(last, message);
+            if(messageNotEmpty(message)){
+                var lastMessage = getLastMessage();
+
+                if(isLastUser(lastMessage, user)){
+                    continueMessage(lastMessage, message);
                 }else{
-                    switchCurrentClass();
-                    this.messages.push({user: user, text: message, class:currentClass});
+                    newMessage(user, message);
                 }
             }
         }
     };
 
+    function messageNotEmpty (message){
+        return message.length != 0;
+    }
+
+    function getLastMessage(){
+        return messages[messages.length - 1];
+    }
+
     function isLastUser(last, newUser){
         return last && (last.user.id === newUser.id)
     }
 
-    function appendTo(last, message){
+    function continueMessage(last, message){
         return last.text += '\n' + message;
     }
 
-    function switchCurrentClass () {
-        if(currentClass == classes.even){
-            currentClass = classes.odd;
-        }else{
-            currentClass = classes.even;
-        }
+    function newMessage(user, message){
+        return messages.push({user: user, text: message});
     }
 });

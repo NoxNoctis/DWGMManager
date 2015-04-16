@@ -1,13 +1,15 @@
 <div id="container" class="center-block row panel panel-default">
 
     <div class="panel-body">
-        <div class="panel panel-default col-md-8">
-            <div class="panel-body">
+        <div id="drawingCanvas" class="panel panel-default col-md-8">
+            <div class="panel-body ">
+                <div class="literally">
 
+                </div>
             </div>
         </div>
 
-        <div id="chat" class="panel panel-default col-md-4">
+        <div id="chat" class="panel panel-default col-md-4" scroll-glue>
             <div class="panel-body">
                 <ul ng-repeat="message in chat.messages">
                     <li>
@@ -20,7 +22,7 @@
             </div>
         </div>
 
-        <textarea class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}"
-                  ui-keypress="{'enter-lshift':'chat.newLine($event)'}"></textarea>
+        <textarea class="form-control" type="text" ui-keypress="{enter:'chat.send($event)'}" title="sfd"></textarea>
     </div>
 </div>
+

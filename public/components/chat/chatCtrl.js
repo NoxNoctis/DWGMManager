@@ -1,14 +1,15 @@
-app.controller('chatCtrl', function (socketFactory) {
+app.controller('chatCtrl', function (socketFactory, chatFactory, currentUser) {
 
     this.socket = socketFactory();
-    this.messages = [];
-    this.currentUser = {name: "david"};
+    this.messages = chatFactory.messages;
+    this.loadingSnapShot = false;
+    this.stopRendering = false;
 
     this.send = function (event) {
         var message = event.currentTarget.value;
         event.currentTarget.value = "";
 
-        this.addNewMessage(this.currentUser, message);
+        chatFactory.addMessage(currentUser, message);
 
         this.socket.emit("newMessage", message);
 
@@ -16,10 +17,30 @@ app.controller('chatCtrl', function (socketFactory) {
     };
 
     this.socket.on("newMessage", function (message) {
-        this.addNewMessage({name: "david"}, message);
+        chatFactory.addMessage({name: "david"}, message);
     }.bind(this));
 
-    this.addNewMessage = function (user, message) {
-        this.messages.push({user: user, text: message});
-    }
+    this.socket.on("drawingChange", function (message) {
+        this.loadingSnapShot = true;
+        this.lc.loadSnapshotJSON(message);
+    }.bind(this));
+
+    setTimeout(function () {
+        this.lc = LC.init($('.literally').get(0), {imageURLPrefix: 'bower_components/literallycanvas/img'});
+        this.lc.on( 'snapshotLoad', function() {
+            this.loadingSnapShot = false;
+            this.stopRendering = true;
+        }.bind(this));
+
+        this.lc.on('drawingChange', function() {
+            if(!this.stopRendering && !this.loadingSnapShot){
+                this.socket.emit('drawingChange', this.lc.getSnapshotJSON());
+            }
+            this.stopRendering = false;
+        }.bind(this));
+
+    }.bind(this), 100);
 });
+
+
+

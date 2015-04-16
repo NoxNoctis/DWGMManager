@@ -11,6 +11,10 @@ module.exports = {
                 this.broadcast.emit("newMessage", message);
             });
 
+            socket.on("drawingChange", function(message){
+                this.broadcast.emit("drawingChange", message);
+            });
+
             socket.on('disconnect', function(){
                 console.log('user disconnected');
             });

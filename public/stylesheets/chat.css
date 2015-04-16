@@ -7,10 +7,26 @@
     height: 100%;
 }
 
-#container div{
+#container > .panel-body, #container > .panel-body > div {
     height: 95%;
 }
 
+#drawingCanvas > .panel-body{
+    height: 100%;
+}
+
+.literally{
+    height: 100%;
+}
+
 #chat{
+    overflow-x: scroll;
+}
+
+.eden-message{
+    background: #FFFFFF;
+}
+.odd-message{
+    background:#CCCCCC;
 }
 

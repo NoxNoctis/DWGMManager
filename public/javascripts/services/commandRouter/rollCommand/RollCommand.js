@@ -1,5 +1,5 @@
-app.factory('rollCommand', function(diceResolver){
-    return new RollCommand([diceResolver]);
+app.factory('rollCommand', function(diceResolver, modifierResolver){
+    return new RollCommand([diceResolver, modifierResolver]);
 });
 
 function RollCommand(resolvers){

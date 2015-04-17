@@ -14,7 +14,7 @@ function RollCommand(resolvers){
             command = command.replace(resolver.regExp, resolver.func);
         });
 
-        return "[" + initial +"] = " + "[" + command +"] = " + math.eval(command);
+        return ["[", initial, "] = ", "[", command, "] = ", math.eval(command)].join();
     };
 }
 

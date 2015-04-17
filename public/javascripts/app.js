@@ -3,8 +3,7 @@
  */
 
 var app = angular.module("dungeon-world-game-master",
-    ['ui.bootstrap',
-        'ngNewRouter',
+    [   'ngNewRouter',
         'btford.socket-io',
         'luegg.directives',
         'monospaced.mousewheel',

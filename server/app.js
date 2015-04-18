@@ -4,6 +4,7 @@ var mainRouter = require('./routers/mainRouter');
 var chatServer = require('./chat/chatServer');
 var format = require('util').format;
 var log = require('util').log;
+    require('./dal/db/connection');
 
 var app = express();
 var server = http.Server(app);

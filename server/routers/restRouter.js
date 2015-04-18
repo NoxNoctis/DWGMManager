@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var database = require('../db/connection');
+var database = require('mongoose');
 
 router.put('/save', function(req){
     console.log(req.body);

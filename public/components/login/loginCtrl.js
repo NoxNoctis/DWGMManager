@@ -1,7 +1,7 @@
 (function(){
 
     function loginCtrl() {
-
+        this.user = {};
         this.remember = false;
     }
 

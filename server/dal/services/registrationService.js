@@ -1,4 +1,5 @@
 var User = require('../persistance/user/user');
+var bcrypt = require('bcrypt');
 
 module.exports = {
     usernameExists: function (username, callback) {
@@ -13,6 +14,13 @@ module.exports = {
         });
     },
     registerUser: function(user, callback){
-        new User(user).save(callback);
+        bcrypt.genSalt(function(err, salt) {
+            bcrypt.hash(user.password, salt, function(err, hash) {
+                user.password = hash;
+                new User(user).save(callback);
+            });
+        });
+
+
     }
 };

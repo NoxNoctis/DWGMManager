@@ -2,42 +2,56 @@
 <html ng-app="dungeon-world-game-master">
 <head lang="en">
     <meta charset="UTF-8">
+    <link href="bower_components/angular-material/angular-material.css" rel="stylesheet" type="text/css">
     <link href="bower_components/isteven-angular-multiselect/angular-multi-select.css" rel="stylesheet" type="text/css">
     <link href="bower_components/angular-ui/build/angular-ui.css" rel="stylesheet" type="text/css">
     <link href="bower_components/angular-ui-grid/ui-grid.min.css" rel="stylesheet" type="text/css">
     <link href="bower_components/literallycanvas/css/literallycanvas.css" rel="stylesheet" type="text/css">
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
     <link href="stylesheets/chat.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="images/DungeonWorldLogo.png" />
+    <link href="stylesheets/encounters.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/DungeonWorldLogo.png"/>
     <title>Dungeon World GM Manager</title>
 </head>
 
-<body ng-controller="mainCtrl">
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand logo" href="#">
-                <img alt="Brand" src="images/DungeonWorldLogo.png">
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a ng-link="maps">Maps</a></li>
-                <li><a ng-link="characters">Characters</a></li>
-                <li><a ng-link="encounters">Encounters</a></li>
-                <li><a ng-link="moves">Moves</a></li>
-                <li><a ng-link="plots">Plots</a></li>
-                <li><a ng-link="chat">Chat</a></li>
-            </ul>
-        </div>
+<body ng-controller="mainCtrl" layout="column">
+<md-toolbar>
+    <div class="md-toolbar-tools main-nav">
+        <a ng-link="/" aria-label="Home" md-button>
+            <md-icon md-svg-src="images/DungeonWorldLogo.svg" class="logo"></md-icon>
+        </a>
+        <ul>
+            <li>
+                <md-button><a ng-link="maps">Maps</a></md-button>
+            </li>
+            <li>
+                <md-button><a ng-link="characters">Characters</a></md-button>
+            </li>
+            <li>
+                <md-button><a ng-link="encounters">Encounters</a></md-button>
+            </li>
+            <li>
+                <md-button><a ng-link="moves">Moves</a></md-button>
+            </li>
+            <li>
+                <md-button><a ng-link="plots">Plots</a></md-button>
+            </li>
+            <li>
+                <md-button><a ng-link="chat">Chat</a></md-button>
+            </li>
+        </ul>
     </div>
-</nav>
+</md-toolbar>
+<md-content ng-viewport layout="row" layout-align="center"></md-content>
 
-<div ng-viewport></div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
+<script data-require="angular.js@1.4.0-beta.6" data-semver="1.4.0-beta.6"
+        src="https://code.angularjs.org/1.4.0-beta.6/angular.js"></script>
 <script src="javascripts/new_router/dist/router.es5.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/hamsterjs/hamster.js"></script>
 <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>

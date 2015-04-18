@@ -1,57 +1,18 @@
-body, html {
-    height: 100%;
-}
-
-div[ng-viewport]{
-    height: 90%;
-}
-
-body {
-    /*padding: 50px;*/
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-/*header*/
-
-.header {
-    background: darkgray;
-    font-size: 150%;
-    font-weight: bold;
-    height: 50px;
-
-}
-
 
 .logo {
-    padding-top: 0;
+    height: 48px;
+    width: 48px;
+}
+.main-nav li{
+    line-height: 56px;
 }
 
-.logo > img{
-    height: 50px;
-}
-
-.tabClass {
-
-    font-size: 130%;
-    display: inline;
+.main-nav ul{
     list-style-type: none;
 }
 
-.tabsetClass > ul{
-    position: absolute;
-    top: 0;
-    left: 20em;
-}
-
-.tabClass > a {
-
-    padding-right: 20px;
-    padding-left: 20px;
-    border: 1px solid #777;
-    border-bottom: none;
-    border-top: none;
-    border-radius: 5px;
-    text-decoration: none
+.main-nav li{
+    float:left;
 }
 
 /*map*/

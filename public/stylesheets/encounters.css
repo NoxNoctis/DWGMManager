@@ -1,0 +1,32 @@
+@font-face {
+    font-family: imortal;
+    src: url('/fonts/PlayfairDisplay-BoldItalic.otf');
+}
+
+.monster-name{
+    font-family: imortal;
+    color: #000;
+    margin: 0;
+}
+
+.monster-tile{
+    border: #000 solid 1px;
+}
+
+.monster-tile .body{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.monster-tile md-icon{
+    margin: 0 5px;
+}
+
+md-grid-tile-footer figcaption{
+    width: 100%;
+}
+
+.hp{
+    color:#880000!important;
+}

@@ -11,7 +11,9 @@ var server = http.Server(app);
 
 app.set('port', process.env.PORT ||3000);
 
-app.use(mainRouter);
+app.configure(function(){
+    app.use(mainRouter);
+});
 
 server.listen(app.get('port'), function () {
 

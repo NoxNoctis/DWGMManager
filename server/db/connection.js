@@ -1,16 +1,15 @@
-var mongo = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 var log = require('util').log;
 
 var conn;
 
-mongo.connect("mongodb://dwgmadmin:qwerqwer@ds045679.mongolab.com:45679/dwgm", function(err, db) {
+mongoose.connect("mongodb://dwgmadmin:qwerqwer@ds045679.mongolab.com:45679/dwgm", function(err) {
     if(!err) {
         log("We are connected to DB");
-        conn = db;
     }
     else{
         log(err.message);
     }
 });
 
-module.exports = {get : function(){return conn;}};
+module.exports = {get : function(){return mongoose.connection;}};

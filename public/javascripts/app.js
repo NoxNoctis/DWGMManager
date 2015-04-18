@@ -1,6 +1,3 @@
-/**
- * Created by Alex on 08/08/2014.
- */
 
 var app = angular.module("dungeon-world-game-master",
     [   'ngMaterial',
@@ -21,13 +18,17 @@ app.config(function ($componentLoaderProvider, $mdIconProvider) {
 
     $mdIconProvider
         .icon('comm:chat', 'icons/communication/svg/production/ic_chat_48px.svg')
+        .icon('nav:more', 'icons/navigation/svg/production/ic_more_vert_48px.svg')
         .icon('heart', 'images/heart.svg', 1000)
-        .icon('swordFight', 'images/swordFight.svg', 512)
+        .icon('swordFight', 'images/swordFight.svg', 512);
 });
 
-app.run(['$router', function ($router) {
+app.run(function ($router) {
     $router
      .config([{
+            path: '/login',
+            component:'login'
+        },{
             path: '/maps',
             component:'maps'
         },{
@@ -46,7 +47,7 @@ app.run(['$router', function ($router) {
             path: '/chat',
             component:'chat'
         }]);
-}]);
+});
 app.controller('mainCtrl', function ($scope) {
 
 });

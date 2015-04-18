@@ -8,6 +8,10 @@ router.get('/', function(req, res){
     res.sendfile(siteRootFolder + '/index.html');
 });
 
+router.get('/icons/*', function(req, res){
+    res.sendfile(siteRootFolder + "/bower_components/material-design-icons" + req.url.replace('/icons', ''));
+});
+
 router.get('/*', function(req, res){
     res.sendfile(siteRootFolder + req.url);
 });

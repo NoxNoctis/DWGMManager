@@ -2,13 +2,11 @@
   "name": "DWGM",
   "version": "0.0.1",
   "dependencies": {
-    "bootstrap": "latest",
     "angular-ui": "latest",
     "angular-mousewheel": "latest",
     "kineticjs": "latest",
     "jquery": "latest",
     "angular": "1.4.0-rc.0",
-    "angular-bootstrap": "latest",
     "angular-ui-router": "latest",
     "lodash": "2.4.1",
     "isteven-angular-multiselect": "v2.0.1",
@@ -18,7 +16,9 @@
     "angular-socket-io": "~0.7.0",
     "literallycanvas": "~0.4.1",
     "angular-scroll-glue": "~2.0.5",
-    "mathjs": "~1.5.2"
+    "mathjs": "~1.5.2",
+    "angular-material": "0.9.0-rc1",
+    "material-design-icons": "~1.0.1"
   },
   "resolutions": {
     "angular": "1.4.0-rc.0"

@@ -1,72 +1,72 @@
-<tabset>
-    <tab heading="monsters" class="tab-pane">
-        <div ng-if="encounters.fightingMonsters.length > 0" class="fight-arena">
-            <div class="h1">Fight!</div>
-            <div ng-repeat="monster in encounters.fightingMonsters track by $index" class="monster-descriptor col-md-4">
-                <div><input type="text" ng-model="monster.name"></div>
-                <div>HP: <input type="number" ng-model="monster.HP" class="num"></div>
-                <div>armor: {{monster.armor}}</div>
-                <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
-                </div>
-                <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}}</span></div>
-                <div><span ng-repeat="tag in monster.tags">{{tag.name}}</span></div>
-                <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
-                <div>instinct: {{monster.instinct}}</div>
-                <div>
-                    <ul>
-                        <li ng-repeat="move in monster.moves">{{move}}</li>
-                    </ul>
-                </div>
-                <button ng-click="encounters.dealDamageTo(monster,damage,piercing,ignoreArmor)">Hit</button>
-                <input type="numer" ng-model="damage" class="num">+<input type="numer" ng-model="piercing" class="num">
-                piercing<input type="checkbox" ng-model="ignoreArmor">Ignore armor
-                <div>
-                    <button ng-click="encounters.removeMonster($index)">Dead!</button>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div ng-repeat="monster in encounters.monsters" class="monster-descriptor col-md-4 container">
-                    <ul class="pull-right list-unstyled">
-                        <li>
-                            <div class="monster-descriptor-btn edit-btn" ng-click="onMonsterEdit($index)"></div>
-                        </li>
-                        <li>
-                            <div class="monster-descriptor-btn pic-btn"></div>
-                        </li>
-                    </ul>
-                    <h2>{{monster.name}}</h2>
-
-                    <div class="row">
-                        <div class="col-md-3"><strong>HP </strong>{{monster.HP}}</div>
-                        <div class="col-md-3"><strong>armor: </strong>{{monster.armor}}</div>
+<md-tabs flex md-center-tabs>
+    <md-tab label="monsters">
+        <div layout="row" layout-align="center" layout-wrap>
+            <div ng-if="encounters.fightingMonsters.length > 0" class="fight-arena">
+                <div class="h1">Fight!</div>
+                <div ng-repeat="monster in encounters.fightingMonsters track by $index" class="monster-descriptor col-md-4">
+                    <div><input type="text" ng-model="monster.name"></div>
+                    <div>HP: <input type="number" ng-model="monster.HP" class="num"></div>
+                    <div>armor: {{monster.armor}}</div>
+                    <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
                     </div>
-                    <div class="row">
-                        <div class="col-md-10">{{monster.attack.action}} ({{monster.attack.roll}} dmg <span
-                                ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
-                        </div>
-                    </div>
-                    <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}} </span></div>
-                    <div><span ng-repeat="tag in monster.tags">{{tag.name}} </span></div>
-                    <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}
-                    </div>
-                    <div><strong>instinct: </strong>{{monster.instinct}}</div>
+                    <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}}</span></div>
+                    <div><span ng-repeat="tag in monster.tags">{{tag.name}}</span></div>
+                    <div ng-if="monster.specialQuality">Special Quality: {{monster.specialQuality}}</div>
+                    <div>instinct: {{monster.instinct}}</div>
                     <div>
                         <ul>
                             <li ng-repeat="move in monster.moves">{{move}}</li>
                         </ul>
                     </div>
-                    <button class="center-block fight-btn" ng-click="encounters.fightMonster($index)">Fight!</button>
+                    <button ng-click="encounters.dealDamageTo(monster,damage,piercing,ignoreArmor)">Hit</button>
+                    <input type="numer" ng-model="damage" class="num">+<input type="numer" ng-model="piercing" class="num">
+                    piercing<input type="checkbox" ng-model="ignoreArmor">Ignore armor
+                    <div>
+                        <button ng-click="encounters.removeMonster($index)">Dead!</button>
+                    </div>
                 </div>
             </div>
+
+            <md-grid-list md-cols="3" md-row-height="6:9" md-gutter="5" flex="50">
+                <md-grid-tile layout="row" layout-align="start start" ng-repeat="monster in encounters.monsters"
+                              class="monster-tile">
+                    <div layout="column" layout-margin class="body" flex>
+                        <div layout="row" layout-align="end start" class="stats" flex="">
+                            <span><label>{{monster.HP}}</label>
+                            <md-icon md-svg-icon="heart" class="hp"></md-icon>
+                            <md-tooltip md-direction="top">HP</md-tooltip></span>
+
+                            <span><label>{{monster.armor}}</label>
+                            <md-icon md-svg-src="/images/shield.svg"></md-icon>
+                            <md-tooltip md-direction="top">Armor</md-tooltip></span>
+                        </div>
+                        <div>{{monster.attack.action}} ({{monster.attack.roll}} dmg <span
+                                ng-if="monster.attack.piercing">+{{monster.attack.piercing}} piercing</span>)
+                        </div>
+                        <div><span ng-repeat="tag in monster.attack.extra">{{tag.name}} </span></div>
+                        <div><span ng-repeat="tag in monster.tags">{{tag.name}} </span></div>
+                        <div ng-if="monster.specialQuality"><strong>Special Quality: </strong>{{monster.specialQuality}}
+                        </div>
+                        <div><strong>instinct: </strong>{{monster.instinct}}</div>
+                        <div>
+                            <ul>
+                                <li ng-repeat="move in monster.moves">{{move}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <md-grid-tile-footer flex>
+                        <div layout="row" layout-align="space-around" flex>
+                            <h1 class="monster-name" flex>{{monster.name}}</h1>
+                            <md-button ng-click="encounters.onMonsterEdit($index)" flex>
+                                <md-icon md-svg-icon="swordFight" class="hp" flex></md-icon>
+                        </div>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
         </div>
-        <button class="btn btn-primary encounter-generator" ng-click="encounters.onMonsterGenerate()">New Monster</button>
-        <div ng-if="encounters.editMode" ng-include="'components/editableMonster.html'" class="monster-edit">
-        </div>
-    </tab>
-    <tab heading="traps" class="tab-pane">
-        <div ng-repeat="trap in traps" class="trap-descriptor">
+    </md-tab>
+    <md-tab label="Traps">
+        <!--<div ng-repeat="trap in traps" class="trap-descriptor">
             <button>edit</button>
             <div>{{trap.name}}</div>
             <div>HP {{monster.HP}}</div>
@@ -83,10 +83,13 @@
                 </ul>
             </div>
             <button>Fight!</button>
-        </div>
-    </tab>
-    <tab heading="treasures" class="tab-pane"></tab>
-</tabset>
+        </div>-->
+    </md-tab>
+    <md-tab label="Treasures">
+
+    </md-tab>
+</md-tabs>
+
 <div class="sideMenu">
     <ul>
         <li ng-repeat="region in encounters.regions" ng-click="encounters.onRegionClick($index)">
@@ -94,4 +97,3 @@
         </li>
     </ul>
 </div>
-

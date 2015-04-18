@@ -43,9 +43,15 @@
         </ul>
         <span flex></span>
 
-        <md-button class="md-icon-button" aria-label="Login">
-            <a ng-link="login">Login</a>
-        </md-button>
+        <div layout="row" layout-align="space-around" flex="20">
+            <md-button class="md-icon-button" aria-label="Login" flex>
+                <a ng-link="login">Login</a>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="Register" flex>
+                <a ng-link="registration">Register</a>
+            </md-button>
+        </div>
     </div>
 </md-toolbar>
 <md-content ng-viewport layout="row" layout-align="center" flex></md-content>
@@ -89,6 +95,7 @@
 <script src="components/encounters/encountersCtrl.js"></script>
 <script src="components/characters/charactersCtrl.js"></script>
 <script src="components/login/loginCtrl.js"></script>
+<script src="components/register/registrationCtrl.js"></script>
 <script src="javascripts/saveCtrl.js"></script>
 <script src=//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.11/seedrandom.min.js></script>
 

@@ -29,6 +29,9 @@ app.run(function ($router) {
             path: '/login',
             component:'login'
         },{
+            path: '/registration',
+            component:'registration'
+        },{
             path: '/maps',
             component:'maps'
         },{

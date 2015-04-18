@@ -1,0 +1,26 @@
+<div flex="50">
+    <md-toolbar layout-margin>
+        <div class="md-toolbar-tools">
+            RegisterK
+        </div>
+        <section layout="row" layout-wrap flex>
+            <md-input-container flex="33">
+                <label>Username</label>
+                <input ng-model="register.user.username"/>
+            </md-input-container>
+            <md-input-container flex="33">
+                <label>Password</label>
+                <input type="password" ng-model="login.user.password"/>
+            </md-input-container>
+            <md-input-container flex="33">
+                <label>Email</label>
+                <input type="email" ng-model="login.user.email"/>
+            </md-input-container>
+
+            <div layout="row" layout-align="center" flex="100">
+                <md-button class="md-primary md-raised" aria-label="Login">Begin your adventure.</md-button>
+            </div>
+
+        </section>
+    </md-toolbar>
+</div>

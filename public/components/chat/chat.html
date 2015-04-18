@@ -1,28 +1,33 @@
-<div id="container" class="center-block row panel panel-default">
+<div layout="column" layout-margin flex="66">
+    <div layout="row" layout-margin id="container">
+        <div id="drawingCanvas" flex="66">
+            <div class="literally" flex>
 
-    <div class="panel-body">
-        <div id="drawingCanvas" class="panel panel-default col-md-8">
-            <div class="panel-body ">
-                <div class="literally">
-
-                </div>
             </div>
         </div>
 
-        <div id="chat" class="panel panel-default col-md-4" scroll-glue>
-            <div class="panel-body">
-                <ul>
-                    <li ng-repeat="message in chat.messages" ng-class-even="'even-message'" ng-class-odd="'odd-message'">
-                        <div>
-                            <h4>{{message.user.name}}</h4>
-                            <h5 class="message-content">{{message.text}}</h5>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <md-content id="chat" flex="33" scroll-glue>
+            <md-list>
+                <md-list-item class="md-3-line" ng-repeat="message in chat.messages">
+                    <img ng-src="https://scontent-lhr.xx.fbcdn.net/hphotos-xap1/t31.0-8/1529703_10152015519022529_1521039308_o.jpg"
+                         class="md-avatar" alt="{{message.user.name}}"/>
 
-        <textarea class="form-control" ui-keypress="{enter:'chat.send($event)'}" title="sfd"></textarea>
+                    <div class="md-list-item-text">
+                        <h3>{{ message.user.name }}</h3>
+                        <h4 class="message-content">{{ message.text }}</h4>
+
+                        <p>{{ item.notes }}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+
+    <div layout="row" layout-padding>
+        <md-input-container flex>
+            <label>Write something</label>
+            <textarea flex class="form-control" ui-keypress="{enter:'chat.send($event)'}"></textarea>
+        </md-input-container>
     </div>
 </div>
 

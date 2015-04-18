@@ -3,7 +3,8 @@
  */
 
 var app = angular.module("dungeon-world-game-master",
-    [   'ngNewRouter',
+    [   'ngMaterial',
+        'ngNewRouter',
         'btford.socket-io',
         'luegg.directives',
         'monospaced.mousewheel',
@@ -13,11 +14,16 @@ var app = angular.module("dungeon-world-game-master",
         'angularFileUpload'
     ]);
 
-app.config(['$componentLoaderProvider', function ($componentLoaderProvider) {
+app.config(function ($componentLoaderProvider, $mdIconProvider) {
     $componentLoaderProvider.setCtrlNameMapping(function (name) {
         return name[0] + name.substr(1) + 'Ctrl';
     });
-}]);
+
+    $mdIconProvider
+        .icon('comm:chat', 'icons/communication/svg/production/ic_chat_48px.svg')
+        .icon('heart', 'images/heart.svg', 1000)
+        .icon('swordFight', 'images/swordFight.svg', 512)
+});
 
 app.run(['$router', function ($router) {
     $router

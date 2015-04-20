@@ -1,22 +1,24 @@
 var router = require('express').Router();
 var registrationService = require('../dal/services/registrationService');
 
-router.post('/register', function(req){
+router.post('/register', function (req, res) {
     var user = req.body;
 
-    registrationService.usernameExists(user.username, function(err, userExists){
-        if(!userExists){
-            registrationService.emailExists(user.email, function(err, emailExists){
-                if(!emailExists){
-                    registrationService.registerUser(user, function(err){
-                        if(!err){
-                            console.log('yay');
+    registrationService.usernameExists(user.username)
+        .then(function (userExists) {
+            if (!userExists) {
+                registrationService.emailExists(user.email)
+                    .then(function (emailExists) {
+                        if (!emailExists) {
+                            registrationService.registerUser(user, function (err) {
+                                if (!err) {
+                                    res.send({status: 'success'});
+                                }
+                            })
                         }
                     });
-                }
-            });
-        }
-    });
+            }
+        });
 });
 
 module.exports = router;

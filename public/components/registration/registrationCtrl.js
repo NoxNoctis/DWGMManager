@@ -1,6 +1,6 @@
 (function(){
 
-    function registrationCtrl(registrationService) {
+    function registrationCtrl(registrationService, $router) {
         this.user = {};
 
         this.register = function(){

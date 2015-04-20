@@ -16,7 +16,13 @@ router.post('/register', function (req, res) {
                                 }
                             })
                         }
+                        else {
+                            res.send({status: 'failure', field: 'email'})
+                        }
                     });
+            }
+            else {
+                res.send({status: 'failure', field: 'username'})
             }
         });
 });

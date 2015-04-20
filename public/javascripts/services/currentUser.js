@@ -1,3 +1,13 @@
-app.factory('currentUser', function(){
-    return {id: 1, name: "david", stats:{str:15, dex:10, con:14, int:12, wis:12, cha: 11}};
-});
+(function(){
+    function currentUser(){
+        var currentUser = {};
+        return {get: function(){
+            return currentUser;
+        },
+        set : function(user){
+            currentUser = user;
+        }};
+    }
+
+    app.factory('currentUser', currentUser);
+})();

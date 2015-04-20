@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var registrationService = require('../dal/services/registrationService');
+var passport = require('passport');
 
 router.post('/register', function (req, res) {
     var user = req.body;
@@ -25,6 +26,15 @@ router.post('/register', function (req, res) {
                 res.send({status: 'failure', field: 'username'})
             }
         });
+});
+
+router.post('/login', function (req, res) {
+    passport.authenticate('local', function(error, user){
+        if(!error){
+            req.login(user, function(){});
+            res.send({status: 'authenticated', user: {id: user._id, username: user.username}});
+        }
+    })(req, res);
 });
 
 module.exports = router;

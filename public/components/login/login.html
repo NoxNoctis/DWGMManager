@@ -18,7 +18,7 @@
                 <md-checkbox class="md-primary black" aria-label="Remember me" ng-model="login.remember" flex="40">
                     {{ login.remember ? 'I shell.' : 'Shell I remember you?'}}
                 </md-checkbox>
-                <md-button class="md-primary md-raised" aria-label="Login">Venture forth.</md-button>
+                <md-button class="md-primary md-raised" aria-label="Login" ng-click="login.login()">Venture forth.</md-button>
             </div>
 
         </section>

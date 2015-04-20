@@ -1,18 +1,19 @@
 var express = require('express');
-var http = require('http');
-var mainRouter = require('./routers/mainRouter');
-var chatServer = require('./chat/chatServer');
-var format = require('util').format;
-var log = require('util').log;
+    middlewares = require('./middlewares');
+    http = require('http');
+    chatServer = require('./chat/chatServer');
+    format = require('util').format;
+    log = require('util').log;
+
     require('./dal/db/connection');
 
 var app = express();
 var server = http.Server(app);
 
+middlewares.configure(app);
+
+
 app.set('port', process.env.PORT ||3000);
-
-
-app.use(mainRouter);
 
 server.listen(app.get('port'), function () {
 

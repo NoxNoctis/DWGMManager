@@ -27,16 +27,12 @@ function defineLoginLogic(){
 
 function defineSerializationLogic(){
     passport.serializeUser(function(user, done) {
-        console.log('ser');
-
         done(null, user.id);
     });
 }
 
 function defineDeserializationLogic(){
     passport.deserializeUser(function(id, done) {
-        console.log('der');
-
         User.findById(id, function(err, user) {
             done(err, user);
         });

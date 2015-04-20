@@ -51,6 +51,14 @@ app.run(function ($router) {
             component:'chat'
         }]);
 });
-app.controller('mainCtrl', function ($scope) {
+app.controller('mainCtrl', function ($scope, currentUser) {
+    $scope.user = currentUser.get();
 
+    $scope.$watch(currentUser.get, function(newUser){
+        $scope.user = newUser;
+    });
+
+    $scope.loggedIn = function(){
+        return currentUser.get().id !== undefined;
+    }
 });

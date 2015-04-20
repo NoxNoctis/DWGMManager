@@ -10,10 +10,10 @@
             <md-list>
                 <md-list-item class="md-3-line" ng-repeat="message in chat.messages">
                     <img ng-src="https://scontent-lhr.xx.fbcdn.net/hphotos-xap1/t31.0-8/1529703_10152015519022529_1521039308_o.jpg"
-                         class="md-avatar" alt="{{message.user.name}}"/>
+                         class="md-avatar" alt="{{message.user.username}}"/>
 
                     <div class="md-list-item-text">
-                        <h3>{{ message.user.name }}</h3>
+                        <h3>{{ message.user.username }}</h3>
                         <h4 class="message-content">{{ message.text }}</h4>
 
                         <p>{{ item.notes }}</p>

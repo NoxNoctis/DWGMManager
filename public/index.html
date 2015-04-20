@@ -43,7 +43,7 @@
         </ul>
         <span flex></span>
 
-        <div layout="row" layout-align="space-around" flex="20">
+        <div layout="row" layout-align="space-around" flex="20" ng-hide="loggedIn()">
             <md-button class="md-icon-button" aria-label="Login" flex>
                 <a ng-link="login">Login</a>
             </md-button>
@@ -51,6 +51,9 @@
             <md-button class="md-icon-button" aria-label="Register" flex>
                 <a ng-link="registration">Register</a>
             </md-button>
+        </div>
+        <div ng-hide="!loggedIn()">
+            Welcome {{user.username}}!
         </div>
     </div>
 </md-toolbar>

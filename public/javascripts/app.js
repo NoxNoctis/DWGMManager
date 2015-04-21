@@ -52,13 +52,13 @@ app.run(function ($router) {
         }]);
 });
 app.controller('mainCtrl', function ($scope, currentUser) {
-    $scope.user = currentUser.get();
-
     $scope.$watch(currentUser.get, function(newUser){
         $scope.user = newUser;
     });
 
     $scope.loggedIn = function(){
-        return currentUser.get().id !== undefined;
-    }
+        return currentUser.get()._id !== undefined;
+    };
+
+    $scope.user = currentUser.update();
 });

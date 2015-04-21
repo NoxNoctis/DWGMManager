@@ -10,9 +10,9 @@ module.exports = function(){
     };
 
     var registerRouters = function(){
-        router.use(siteRouter);
-        router.use(restRouter);
         router.use(userManagementRouter);
+        router.use(restRouter);
+        router.use(siteRouter);
     };
 
     initializeMiddlewares();

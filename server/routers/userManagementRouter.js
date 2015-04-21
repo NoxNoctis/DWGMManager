@@ -37,4 +37,8 @@ router.post('/login', function (req, res) {
     })(req, res);
 });
 
+router.get('/users/current', function(req, res){
+    res.send(req.user || {});
+});
+
 module.exports = router;

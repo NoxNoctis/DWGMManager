@@ -7,7 +7,7 @@
                 $http.post('/login', user)
                     .then(function(q){
                         $router.navigate('/maps');
-                        currentUser.set(q.data.user);
+                        currentUser.update();
                     });
             }
         }

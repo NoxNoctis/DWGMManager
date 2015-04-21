@@ -33,7 +33,7 @@ function defineSerializationLogic(){
 
 function defineDeserializationLogic(){
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        User.findById(id, '_id username email   ', function(err, user) {
             done(err, user);
         });
     });

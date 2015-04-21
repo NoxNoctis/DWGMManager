@@ -54,6 +54,7 @@
         </div>
         <div ng-hide="!loggedIn()">
             Welcome {{user.username}}!
+            <md-button ng-click="logout()">Logout</md-button>
         </div>
     </div>
 </md-toolbar>
@@ -99,6 +100,7 @@
 <script src="components/characters/charactersCtrl.js"></script>
 <script src="components/login/loginCtrl.js"></script>
 <script src="components/login/loginService.js"></script>
+<script src="javascripts/services/logoutService.js"></script>
 <script src="components/registration/registrationCtrl.js"></script>
 <script src="components/registration/registrationService.js"></script>
 <script src="javascripts/saveCtrl.js"></script>

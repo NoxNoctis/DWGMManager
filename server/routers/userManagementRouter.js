@@ -38,6 +38,13 @@ router.post('/login', function (req, res) {
     })(req, res);
 });
 
+router.post('/logout', function (req, res) {
+    if(req.user){
+        req.logout();
+        res.redirect('/');
+    }
+});
+
 router.get('/users/current', function(req, res){
     res.send(req.user || {});
 });

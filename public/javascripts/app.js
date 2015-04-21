@@ -51,13 +51,17 @@ app.run(function ($router) {
             component:'chat'
         }]);
 });
-app.controller('mainCtrl', function ($scope, currentUser) {
+app.controller('mainCtrl', function ($scope, currentUser, logoutService) {
     $scope.$watch(currentUser.get, function(newUser){
         $scope.user = newUser;
     });
 
     $scope.loggedIn = function(){
         return currentUser.get()._id !== undefined;
+    };
+
+    $scope.logout = function(){
+        return logoutService();
     };
 
     $scope.user = currentUser.update();

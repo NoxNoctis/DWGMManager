@@ -34,7 +34,7 @@ router.post('/login', function (req, res) {
             req.login(user, function(){});
             res.send({status: 'success', user: {id: user._id, username: user.username}});
         }
-        res.send({status: 'notFound'});
+        res.send({status: 'failure'});
     })(req, res);
 });
 

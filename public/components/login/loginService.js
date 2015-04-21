@@ -1,6 +1,6 @@
 (function(){
 
-    function loginService($http, $router, currentUser) {
+    function loginService($http, $router, $mdToast, currentUser) {
         function success(){
             $router.navigate('/maps');
         }
@@ -26,8 +26,8 @@
             login: function(user){
                 $http.post('/login', user)
                     .then(function(q){
-                        $router.navigate('/maps');
                         currentUser.update();
+                        statusHandlers[q.data.status](q);
                     });
             }
         }

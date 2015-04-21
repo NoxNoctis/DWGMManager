@@ -30,10 +30,11 @@ router.post('/register', function (req, res) {
 
 router.post('/login', function (req, res) {
     passport.authenticate('local', function(error, user){
-        if(!error){
+        if(user){
             req.login(user, function(){});
-            res.send({status: 'authenticated', user: {id: user._id, username: user.username}});
+            res.send({status: 'success', user: {id: user._id, username: user.username}});
         }
+        res.send({status: 'notFound'});
     })(req, res);
 });
 

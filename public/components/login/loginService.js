@@ -1,6 +1,26 @@
 (function(){
 
     function loginService($http, $router, currentUser) {
+        function success(){
+            $router.navigate('/maps');
+        }
+
+        function failure(){
+            showToast("Incorrect username or password");
+        }
+
+        function showToast(msg){
+            $mdToast.show($mdToast.simple({
+                content: msg,
+                hideDelay: 6000,
+                position: 'top right'
+            }));
+        }
+
+        var statusHandlers = {
+            success: success,
+            failure: failure
+        };
 
         return {
             login: function(user){

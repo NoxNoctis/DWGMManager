@@ -3,7 +3,7 @@ var cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
     mainRouter = require('./routers/mainRouter'),
-    passportInitializer = require('./passportInitializer');
+    passportInitializer = require('./passport/passportInitializer');
 
 module.exports = {configure: function(app){
     app.use(cookieParser());

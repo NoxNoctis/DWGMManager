@@ -17,6 +17,11 @@
             }));
         }
 
+        function postLogin(q) {
+            currentUser.update();
+            statusHandlers[q.data.status](q);
+        }
+
         var statusHandlers = {
             success: success,
             failure: failure
@@ -25,10 +30,7 @@
         return {
             login: function(user){
                 $http.post('/login', user)
-                    .then(function(q){
-                        currentUser.update();
-                        statusHandlers[q.data.status](q);
-                    });
+                    .then(postLogin);
             }
         }
     }

@@ -29,9 +29,10 @@ router.post('/register', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
-    passport.authenticate('local', function(error, user){
-        if(user){
-            req.login(user, function(){});
+    passport.authenticate('local', function (error, user) {
+        if (user) {
+            req.login(user, function () {
+            });
             res.send({status: 'success', user: {id: user._id, username: user.username}});
         }
         res.send({status: 'failure'});
@@ -39,13 +40,21 @@ router.post('/login', function (req, res) {
 });
 
 router.post('/logout', function (req, res) {
-    if(req.user){
+    if (req.user) {
         req.logout();
         res.redirect('/');
     }
 });
 
-router.get('/users/current', function(req, res){
+router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/',
+        failureRedirect: '/login'
+    }));
+
+router.get('/users/current', function (req, res) {
     res.send(req.user || {});
 });
 

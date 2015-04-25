@@ -1050,6 +1050,347 @@ app.service('$dataCollector', function () {
     this.allClasses.push(bard);
     this.allClasses.push(thief);
     this.allClasses.push(fighter);
+
+    var arcaneArtMove = new Move();
+    arcaneArtMove.name = 'Arcane Art';
+    arcaneArtMove.description = 'When you weave a performance into a basic spell, choose an ally and an effect: \n' +
+    '• Heal 1d8 damage \n' +
+    '• +1d4 forward to damage    \n' +
+    '• Their mind is shaken clear of one enchantment  \n' +
+    '• The next time someone successfully assists the target with aid, they get +2 ' +
+    'instead of +1 \n' +
+    'Then roll+Cha. ✴On a 10+, the ally gets the selected effect. ✴On a 7-9, your spell still ' +
+    'works, but you draw unwanted attention or your magic reverberates to other targets ' +
+    'affecting them as well, GM’s choice.';
+
+    var bardicLoreMove = new Move();
+    bardicLoreMove.name = 'Bardic Lore';
+    bardicLoreMove.description = 'Choose an area of expertise:' +
+    '• Spells and Magicks \n' +
+    '• The Dead and Undead  \n' +
+    '• Grand Histories of the Known World  \n' +
+    '• A Bestiary of Creatures Unusual  \n' +
+    '• The Planar Spheres   \n' +
+    '• Legends of Heroes Past     \n' +
+    '• Gods and Their Servants                               \n' +
+    'When you first encounter an important creature, location, or item (your call) covered by ' +
+    'your bardic lore you can ask the GM any one question about it; the GM will answer ' +
+    'truthfully. The GM may then ask you what tale, song, or legend you heard that information in.';
+
+
+    pcs = [];
+
+    var silver = new PC();
+    silver.name = 'Silver';
+    silver.armor = 1;
+    silver.xp = 57;
+    silver.alignment = 'neutral';
+    silver.race = 'elf';
+    silver.class = bard;
+    silver.moves.push(arcaneArtMove);
+    silver.moves.push(bardicLoreMove);
+    silver.setStat('STR', 8);
+    silver.setStat('DEX', 13);
+    silver.setStat('CON', 9);
+    silver.setStat('INT', 18);
+    silver.setStat('WIS', 13);
+    silver.setStat('CHA', 18);
+    silver.inventory = [
+        {
+            name: 'rapier',
+            quantity: 1,
+            price: 20,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'A songbook in a forgotten tongue',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'spellbook'
+        },
+        {
+            name: 'SoulStone',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'connection to the guild'
+        },
+        {
+            name: 'Adventuring Gear',
+            quantity: 4,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'chainmail',
+            quantity: 1,
+            weight: 1,
+            effect: '1 armor'
+        },
+        {
+            name: 'Ugaly',
+            quantity: 3,
+            weight: 0,
+            effect: 'a drug that is grown in the sewers of Blackdeath - grants immunity to magical effects for one hour but makes you sick'
+        },
+        {
+            name: 'Lush',
+            quantity: 3,
+            weight: 0,
+            effect: 'a known drug. Can be used for bribes'
+        },
+        {
+            name: 'Pouch of Silver Powder',
+            quantity: 1,
+            price: 10,
+            weight: 0,
+            effect: 'can be sold'
+        },
+        {
+            name: 'Package with valuable drugs',
+            quantity: 1,
+            weight: 0,
+            effect: 'was gives to use as payment to get to Sandstorm'
+        },
+        {
+            name: 'Throwing Dagger',
+            quantity: 5,
+            weight: 0,
+            effect: 'thrown'
+        },
+        {
+            name: 'Halfling pipeleaf',
+            quantity: 10,
+            price: 10,
+            weight: 0,
+            effect: '+1 to parley'
+        },
+        {
+            name: 'Ragged bow',
+            quantity: 3,
+            weight: 2,
+            effect: 'near'
+        },
+        {
+            name: 'A long hollow bamboo',
+            quantity: 1,
+            weight: 0,
+            effect: '1 foot, hollow bamboo'
+        }
+
+    ];
+
+    var shadow = new PC();
+    shadow.name = 'Shadow';
+    shadow.armor = 1;
+    shadow.xp = 36;
+    shadow.alignment = 'neutral';
+    shadow.race = 'drow';
+    shadow.class = thief;
+    shadow.moves.push(arcaneArtMove);
+    shadow.moves.push(bardicLoreMove);
+    shadow.setStat('STR', 8);
+    shadow.setStat('DEX', 18);
+    shadow.setStat('CON', 13);
+    shadow.setStat('INT', 12);
+    shadow.setStat('WIS', 16);
+    shadow.setStat('CHA', 9);
+    shadow.inventory = [
+        {
+            name: 'rapier',
+            quantity: 1,
+            price: 20,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'A songbook in a forgotten tongue',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'spellbook'
+        },
+        {
+            name: 'SoulStone',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'connection to the guild'
+        },
+        {
+            name: 'Adventuring Gear',
+            quantity: 4,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'chainmail',
+            quantity: 1,
+            weight: 1,
+            effect: '1 armor'
+        },
+        {
+            name: 'Ugaly',
+            quantity: 3,
+            weight: 0,
+            effect: 'a drug that is grown in the sewers of Blackdeath - grants immunity to magical effects for one hour but makes you sick'
+        },
+        {
+            name: 'Lush',
+            quantity: 3,
+            weight: 0,
+            effect: 'a known drug. Can be used for bribes'
+        },
+        {
+            name: 'Pouch of Silver Powder',
+            quantity: 1,
+            price: 10,
+            weight: 0,
+            effect: 'can be sold'
+        },
+        {
+            name: 'Package with valuable drugs',
+            quantity: 1,
+            weight: 0,
+            effect: 'was gives to use as payment to get to Sandstorm'
+        },
+        {
+            name: 'Throwing Dagger',
+            quantity: 5,
+            weight: 0,
+            effect: 'thrown'
+        },
+        {
+            name: 'Halfling pipeleaf',
+            quantity: 10,
+            price: 10,
+            weight: 0,
+            effect: '+1 to parley'
+        },
+        {
+            name: 'Ragged bow',
+            quantity: 3,
+            weight: 2,
+            effect: 'near'
+        },
+        {
+            name: 'A long hollow bamboo',
+            quantity: 1,
+            weight: 0,
+            effect: '1 foot, hollow bamboo'
+        }
+
+    ];
+
+    var serin = new PC();
+    serin.name = 'Serin "Lasher" TigerBane';
+    serin.armor = 2;
+    serin.xp = 21;
+    serin.alignment = 'neutral';
+    serin.race = 'human';
+    serin.class = fighter;
+    serin.moves.push(arcaneArtMove);
+    serin.moves.push(bardicLoreMove);
+    serin.setStat('STR', 18);
+    serin.setStat('DEX', 13);
+    serin.setStat('CON', 15);
+    serin.setStat('INT', 9);
+    serin.setStat('WIS', 12);
+    serin.setStat('CHA', 8);
+    serin.inventory = [
+        {
+            name: 'rapier',
+            quantity: 1,
+            price: 20,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'A songbook in a forgotten tongue',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'spellbook'
+        },
+        {
+            name: 'SoulStone',
+            quantity: 1,
+            price: 0,
+            weight: 0,
+            effect: 'connection to the guild'
+        },
+        {
+            name: 'Adventuring Gear',
+            quantity: 4,
+            weight: 1,
+            effect: 'close range, +1 piercing'
+        },
+        {
+            name: 'chainmail',
+            quantity: 1,
+            weight: 1,
+            effect: '1 armor'
+        },
+        {
+            name: 'Ugaly',
+            quantity: 3,
+            weight: 0,
+            effect: 'a drug that is grown in the sewers of Blackdeath - grants immunity to magical effects for one hour but makes you sick'
+        },
+        {
+            name: 'Lush',
+            quantity: 3,
+            weight: 0,
+            effect: 'a known drug. Can be used for bribes'
+        },
+        {
+            name: 'Pouch of Silver Powder',
+            quantity: 1,
+            price: 10,
+            weight: 0,
+            effect: 'can be sold'
+        },
+        {
+            name: 'Package with valuable drugs',
+            quantity: 1,
+            weight: 0,
+            effect: 'was gives to use as payment to get to Sandstorm'
+        },
+        {
+            name: 'Throwing Dagger',
+            quantity: 5,
+            weight: 0,
+            effect: 'thrown'
+        },
+        {
+            name: 'Halfling pipeleaf',
+            quantity: 10,
+            price: 10,
+            weight: 0,
+            effect: '+1 to parley'
+        },
+        {
+            name: 'Ragged bow',
+            quantity: 3,
+            weight: 2,
+            effect: 'near'
+        },
+        {
+            name: 'A long hollow bamboo',
+            quantity: 1,
+            weight: 0,
+            effect: '1 foot, hollow bamboo'
+        }
+
+    ];
+
+    pcs.push(silver);
+    pcs.push(shadow);
+    pcs.push(serin);
+
+
     this.getDebilities = function () {
         return {
             STR: 'weak',

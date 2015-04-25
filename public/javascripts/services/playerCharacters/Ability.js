@@ -1,7 +1,8 @@
-function Ability(name) {
+function Ability(name, debilityName) {
     this.name = name;
     this.value = 0;
     this.debility = false;
+    this.debilityName = debilityName;
 }
 
 Ability.prototype.getModifier = function () {

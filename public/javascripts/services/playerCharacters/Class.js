@@ -1,4 +1,5 @@
 function Class(props) {
+    if(!angular.isDefined(props)) props={};
     this.name = props.name || "";
     this.damage = props.damage || 0;
     this.baseHP = props.baseHP || 0;

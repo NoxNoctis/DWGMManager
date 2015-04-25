@@ -1,3 +1,15 @@
+<!--<ul>-->
+<!--<li>Player Characters</li>-->
+<!--<li>NPCs-->
+<!--<ul>-->
+<!--<li>Name</li>-->
+<!--<li>Skills</li>-->
+<!--<li>Background</li>-->
+<!--<li>Description</li>-->
+<!--<li>Personality</li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<li>NPC Generator</li>-->
 
 <md-tabs flex md-center-tabs>
     <md-tab label="PCs">
@@ -10,35 +22,34 @@
                 </div>
                 <div layout="row">
                     <div flex="30">Class: {{pc.class.name}}</div>
-                    <div flex="30">level: {{characters.getLevelByXp(pc.xp)}}</div>
+                    <div flex="30">level: {{characters.levelByXp(pc.xp)}}</div>
                     <div flex>XP: <input type="number" ng-model="pc.xp" class="num">
                         ({{characters.getRemainderXp(pc.xp)}} to next
                         level)
                     </div>
                 </div>
                 <div layout="row">
-                    <div flex="30">Damage: {{pc.class.damage}}</div>
+                    <div flex="30">Damage: d{{pc.class.damage}}</div>
                     <div flex="30">Armor: {{pc.armor}}</div>
                     <div flex>HP: <input type="number" ng-model="pc.hp" class="num"
-                                                     ng-init="pc.hp=characters.getMaxHp(pc)"> of {{characters.getMaxHp(pc)}}
+                                                     ng-init="pc.hp=pc.getMaxHp()"> of {{pc.getMaxHp()}}
                     </div>
                 </div>
                 <!--Abilities-->
                 <div layout="row">
                     <div flex="15" ng-repeat="stat in pc.stats">
                         <div><span ng-editable="stat.value" type="number"></span> (<span
-                                ng-if="getModifier(stat.value,debility)>0">+</span>{{characters.getModifier(stat.value,debility)}})
+                                ng-if="stat.getModifier()>0">+</span>{{stat.getModifier()}})
                         </div>
-                        <div class="debility" ng-click="debility=!debility">
-                            <input type="checkbox" ng-click="$event.stopPropagation()" ng-model="debility"
-                                   ng-init="debility=false">
-                            <span>{{debilities[stat.name]}}</span>
+                        <div class="debility" ng-click="stat.debility=!stat.debility">
+                            <input type="checkbox" ng-click="$event.stopPropagation()" ng-model="stat.debility">
+                            <span>{{stat.debilityName}}</span>
                         </div>
                         <div>{{stat.name}}</div>
                     </div>
                 </div>
                 <div>
-                    <span>Drive: {{pc.drive}}</span>
+                    <span>Drive: {{pc.alignment}}</span>
                 </div>
 
                 <div class="row">
@@ -51,19 +62,19 @@
                                 ng-change="addMoveTo(pc, selectedMove);moveSelect=false">
                         </select>
                         <dl>
-                            <dt ng-repeat-start="move in pc.class.moves" ng-click="$parent.showDesc=!$parent.showDesc">
-                                <md-tooltip>{{move.desc}}</md-tooltip>
+                            <dt ng-repeat-start="move in pc.moves" ng-click="$parent.showDesc=!$parent.showDesc">
+                                <md-tooltip>{{move.description}}</md-tooltip>
                                 <span ng-click="removeMove($index,pc)">(-)</span>
                                 {{move.name}}
                             </dt>
                             <dd ng-repeat-end ng-show="showDesc" ng-click="showDesc=false" ng-init="showDesc=false">
-                                {{move.desc}}
+                                {{move.description}}
                             </dd>
                         </dl>
                     </div>
                     <!--Inventory-->
                     <div class="col-md-6">
-                        Inventory: (load: {{characters.totalWeight(pc.inventory)}} of {{characters.getMaxLoad(pc)}})
+                        Inventory: (load: {{characters.totalWeight(pc.inventory)}} of {{pc.getMaxLoad()}})
                         <span ng-click="characters.addItemTo(pc)">(+)</span>
 
                         <div ui-grid="{data: pc.inventory, columnDefs: characters.columnDefs}" class="gridStyle"></div>
